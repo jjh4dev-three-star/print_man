@@ -1,4 +1,4 @@
-﻿unit unt_CJ_Korea;
+﻿unit unt_Barcode_Sample;
 
 interface
 
@@ -25,7 +25,7 @@ uses
 
 
 type
-  Tfrm_CJ_Korea = class(TForm)
+  Tfrm_Barcode_Sample = class(TForm)
     cxButton1: TcxButton;
     cxGrid1: TcxGrid;
     tv1: TcxGridTableView;
@@ -34,6 +34,7 @@ type
     tv1Chk: TcxGridColumn;
     cxGrid1Level1: TcxGridLevel;
     Memo_Error: TMemo;
+    frxReport1: TfrxReport;
     procedure cxButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -43,8 +44,8 @@ type
     { Private declarations }
     szFontSize: Integer;
 
-    procedure SetKoreaMaster_onePage(oRS: TFDQuery; var KorexMaster: TKorexMaster);
-    procedure SetKorexInvoice_Type1(KorexMaster: TKorexMaster);
+    procedure SetKorexInvoice_Type1(oRS: TFDQuery);
+
     procedure SetKoreaMaster_onePageTEST_01(var KorexMaster: TKorexMaster);
     procedure SetKoreaMaster_onePageTEST_02(var KorexMaster: TKorexMaster);
     procedure SetKoreaMaster_onePageTEST_03(var KorexMaster: TKorexMaster);
@@ -72,7 +73,7 @@ type
 
 
 var
-  frm_CJ_Korea: Tfrm_CJ_Korea;
+  frm_Barcode_Sample: Tfrm_Barcode_Sample;
 
 implementation
 
@@ -82,12 +83,12 @@ uses untDatabase, unt_CommLib; //untGlobal,
 
 { Tfrm_CJ_Korea }
 
-procedure Tfrm_CJ_Korea.cxButton1Click(Sender: TObject);
+procedure Tfrm_Barcode_Sample.cxButton1Click(Sender: TObject);
 begin
-  do_Print_CJ('admin', '20240514_154351_F04A1');
+  do_Print_CJ('jjh103', '20260312_194351_F04A1');
 end;
 
-function Tfrm_CJ_Korea.do_Print_CJ(szUSER_ID, szBUNCH_ID: string): Integer;
+function Tfrm_Barcode_Sample.do_Print_CJ(szUSER_ID, szBUNCH_ID: string): Integer;
 var
   KorexMaster: TKorexMaster;
   oRS: TFDQuery;
@@ -126,16 +127,19 @@ begin
       szReport.Clear;
       szReport.Report.Clear;
 
-      szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ대한통운01.fr3');
+      szReport.LoadFromFile(gszHomePath + BARCODE_FR3_PATH + 'barcode_sample.fr3');
+      //szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ대한통운01.fr3');
       szReport.OnBeforePrint := FR_InvoiceBeforePrint;
       szReport.PrintOptions.printer := pchar(ValidPrinterList.Strings[0]);
+      szReport.PrintOptions.ShowDialog := False; // 인쇄 대화상자 표시 안함
       szReport.SelectPrinter;
       ////////////////////////////////////////////////////////////////
 
 
       szQry := '';
-      szQry := szQry + 'select * from DMT_PRT_INVOICE ' + #13 + #10;
-      szQry := szQry + 'where USER_ID = ''' + szUSER_ID + ''' ' + #13 + #10;
+      szQry := szQry + 'select * from DMT_PRT_BARCODE ' + #13 + #10;
+      szQry := szQry + 'where 1=1 ' + #13 + #10;
+      szQry := szQry + 'and USER_ID = ''' + szUSER_ID + ''' ' + #13 + #10;
       szQry := szQry + 'and BUNCH_ID = ''' + szBUNCH_ID + ''' ' + #13 + #10;
       szQry := szQry + 'and RSLT_STATE = ''R'' ' + #13 + #10;
       szQry := szQry + 'order by SORT_NUM ' + #13 + #10;
@@ -147,9 +151,7 @@ begin
       nInvCnt := 0;
       while (not oRS.Eof) do
       begin
-
-        SetKoreaMaster_onePage(oRS, KorexMaster);
-        SetKorexInvoice_Type1(KorexMaster);
+        SetKorexInvoice_Type1(oRS);
 
         nInvCnt := nInvCnt + 1;
 
@@ -160,22 +162,22 @@ begin
           szReport.Report.Clear;
           FreeAndNil(szReport); // szReport.Free;
 
-
           ////////////////////////////////////////////////////////////////
           /// 100장 단위로 끊어서 처리하기 위해 다시 리포트 준비 시작
           szReport := TfrxReport.Create(self);
           szReport.Clear;
           szReport.Report.Clear;
 
-          szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ대한통운01.fr3');
+          //szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ대한통운01.fr3');
+          szReport.LoadFromFile(gszHomePath + BARCODE_FR3_PATH + 'barcode_sample.fr3');
+
           szReport.OnBeforePrint := FR_InvoiceBeforePrint;
           szReport.PrintOptions.printer := pchar(ValidPrinterList.Strings[0]);
+          szReport.PrintOptions.ShowDialog := False; // 인쇄 대화상자 표시 안함
           szReport.SelectPrinter;
           ////////////////////////////////////////////////////////////////
 
-
           nInvCnt := 0;
-
         end;
 
 
@@ -192,8 +194,6 @@ begin
         FreeAndNil(szReport); // szReport.Free;
       end;
 
-
-
 //      SetKoreaMaster_onePageTEST_01(KorexMaster);
 //      SetKorexInvoice_Type1(KorexMaster);
 //      SetKoreaMaster_onePageTEST_02(KorexMaster);
@@ -207,26 +207,18 @@ begin
 //      SetKoreaMaster_onePageTEST_06(KorexMaster);
 //      SetKorexInvoice_Type1(KorexMaster);
 
-
-
-
-
-
-
       szQry := '';
-      szQry := szQry + 'update DMT_PRT_INVOICE set ' + #13 + #10;
+      szQry := szQry + 'update DMT_PRT_BARCODE set ' + #13 + #10;
       szQry := szQry + '   RSLT_STATE = ''P'' ' + #13 + #10; // R:출력요청, P:출력완료, O:배송처리됨, Y:전송됨, E:에러, D:중복
       szQry := szQry + '  ,PRINT_COUNT = PRINT_COUNT + 1 ' + #13 + #10;
-      szQry := szQry + 'where USER_ID = ''' + szUSER_ID + ''' ' + #13 + #10;
+      szQry := szQry + 'where 1=1 ' + #13 + #10;
+      szQry := szQry + 'and USER_ID = ''' + szUSER_ID + ''' ' + #13 + #10;
       szQry := szQry + 'and BUNCH_ID = ''' + szBUNCH_ID + ''' ' + #13 + #10;
       szQry := szQry + 'and RSLT_STATE = ''R'' ' + #13 + #10;
       oRS.SQL.Text := szQry; //Get_Querytext(szQry);
-      oRS.Execute;
-
-
+      //oRS.Execute;
 
       Result := nTotalCnt;
-
 
     except
       on e: Exception do
@@ -262,7 +254,7 @@ begin
 end;
 
 
-procedure Tfrm_CJ_Korea.PrintKoreaMaster(KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.PrintKoreaMaster(KorexMaster: TKorexMaster);
 begin
   // KorexMaster:TKorexMaster 에 설정된 값 그대로 송장출력정보 세팅 후 출력
   // ( untGlobal . szReport: TfrxReport; 에 세팅 )
@@ -274,13 +266,13 @@ begin
     szReport.Report.Clear;
 
     //--------------------------------------------------------------------------
-    szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ대한통운01.fr3');
+    szReport.LoadFromFile(gszHomePath + BARCODE_FR3_PATH + 'barcode_sample.fr3');
     szReport.OnBeforePrint := FR_InvoiceBeforePrint;
     szReport.PrintOptions.printer := pchar(ValidPrinterList.Strings[0]);
     szReport.SelectPrinter;
 
     //--------------------------------------------------------------------------
-    SetKorexInvoice_Type1(KorexMaster);
+    //SetKorexInvoice_Type1(KorexMaster);
     szReport.Print;
 
     //--------------------------------------------------------------------------
@@ -293,224 +285,36 @@ begin
 end;
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster(var KorexMaster: TKorexMaster);
 begin
   //
 end;
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePage(oRS: TFDQuery; var KorexMaster: TKorexMaster);
-begin
-  //
 
-  with KorexMaster do
-  begin
-    seq               := oRS.FieldByName('SEQ_NUM').AsString; // '6';
-    invoiceno         := oRS.FieldByName('INVOICENO').AsString; // '312402709242';
-    delivery_code     := oRS.FieldByName('DELIVERY_CODE').AsString; // 'D001';
-    delivery_user_id  := oRS.FieldByName('DELIVERY_USER_ID').AsString; // '30271546';
-    user_id           := oRS.FieldByName('USER_ID').AsString; // 'admin';
-    seller_code       := oRS.FieldByName('OWNER_ID').AsString; // 'A002';
-    who_code          := oRS.FieldByName('WH_ID').AsString; // 'C001';
-
-    sendr_nm          := oRS.FieldByName('SENDR_NM').AsString; // '밸류체인발송_06';
-    sendr_mail_no     := oRS.FieldByName('SENDR_MAIL_NO').AsString; // '047-91';
-    sendr_addr        := oRS.FieldByName('SENDR_ADDR').AsString; // '서울 성동구 상원12길 1';
-    sendr_detail_addr := oRS.FieldByName('SENDR_DETAIL_ADDR').AsString; // '3층';
-    sendr_remark      := oRS.FieldByName('SENDR_REMARK').AsString; // '딜리버리랩 [딜리버리랩][1/25]-->2023-10-10';
-    sendr_tel_no      := oRS.FieldByName('SENDR_TEL_NO').AsString; // '010-7758-3541';
-    sendr_cell_no     := oRS.FieldByName('SENDR_CELL_NO').AsString; // '02-124-3541
-
-    rcvr_nm           := oRS.FieldByName('RCVR_NM').AsString; // '도시곳간광교점';
-    rcvr_mail_no      := oRS.FieldByName('RCVR_MAIL_NO').AsString; // '16515';
-    rcvr_addr         := oRS.FieldByName('RCVR_ADDR').AsString; // '경기 수원시 영통구 광교호수공원로 20(상가동115116호)'; //szrcvr_addr;
-    rcvr_detail_addr  := oRS.FieldByName('RCVR_DETAIL_ADDR').AsString; // '' + '[원천동 , 더샵광교레이크시티]'; //szrcvr_detail_addr + RefineAddr.OldAddr;
-    rcvr_remark       := oRS.FieldByName('RCVR_REMARK').AsString; // '전체 일괄 발송메시지 테스트'; //szrcvr_remark;
-    rcvr_tel_no       := oRS.FieldByName('RCVR_TEL_NO').AsString; // ''; //szrcvr_tel_no;
-    rcvr_cell_no      := oRS.FieldByName('RCVR_CELL_NO').AsString; // '010-3180-2286'; //szrcvr_cell_no;
-
-
-    detail_item_count := oRS.FieldByName('ITEM_COUNT').AsInteger; // 3;
-    detail_item_data  := oRS.FieldByName('ITEM_DATA').AsString; // '상품명 A  1EA' + #13#10 +
-                                                                //  '상품명 B  3EA' + #13#10 +
-                                                                //  '상품명 C  4EA' + #13#10
-                                                                //  ;
-
-
-    frt_code          := oRS.FieldByName('FRT_CODE').AsString; // '0100'; //szfrt_code;
-    frt_name          := GetFareName(frt_code); // '0010':'신용'  '0020':'착불'
-
-    if frt_code = '0010' then
-      frt_uprice      := '0' // '0'
-    else
-      frt_uprice      := oRS.FieldByName('FRT_UPRICE').AsString; // '2500'; //szfrt_uprice;
-
-
-    cust_mgmt_no      := oRS.FieldByName('CUST_MGMT_NO').AsString; // 'A002_C001_2771-1'; //Tmp_szcust_mgmt_no;
-    remark            := oRS.FieldByName('REMARK').AsString; // ''; //szremark;
-    rcpt_code         := oRS.FieldByName('RCPT_CODE').AsString; // '01'; //szrcpt_code;
-    reg_datetime      := FormatDateTime('YYYY.MM.DD', now); //oRS.FieldByName('INS_DATE').AsDateTime
-    box_type          := oRS.FieldByName('BOX_TYPE').AsString; // '2'; //szBox_Type;
-    send_tml          := oRS.FieldByName('SEND_TML').AsString; // ''; //gszSendTML;
-
-    Ord_No1           := oRS.FieldByName('ORD_NO').AsString; // '20231011-2'; //szOrd_No1;
-    printCount        := oRS.FieldByName('PRINT_COUNT').AsString; //szPrintCount;
-
-
-//  if use_refine_Addr = false then
-//  begin
-//    KorexMaster.end_no := oRS.FieldByName('end_no').AsString;
-//    KorexMaster.sub_end_no := oRS.FieldByName('sub_end_no').AsString;
-//    KorexMaster.end_nm := oRS.FieldByName('end_nm').AsString;
-//    KorexMaster.man_bran_nm := oRS.FieldByName('man_bran_nm').AsString;
-//    KorexMaster.cldv_emp_nm := oRS.FieldByName('cldv_emp_nm').AsString;
-//  end
-//  else
-
-    end_no            := oRS.FieldByName('END_NO').AsString; // '6Z65'; // szEnd_no;
-    sub_end_no        := oRS.FieldByName('SUB_END_NO').AsString; // '2k'; //szSub_end_no;
-    end_nm            := oRS.FieldByName('END_NM').AsString; // '영통Sub'; //szEnd_nm;
-    man_bran_nm       := oRS.FieldByName('MAN_BRAN_NM').AsString; // '경기수원아주'; //szMan_bran_nm;
-    man_Shot_bran_nm  := oRS.FieldByName('MAN_SHOT_BRAN_NM').AsString; // '수원아주'; //szBranShortNm;
-    cldv_emp_nm       := oRS.FieldByName('CLDV_EMP_NM').AsString; // '##'; //szCldv_emp_nm;
-
-
-    chk_korex_addr    := true;
-
-    Cos               := '';
-    font_size         := oRS.FieldByName('FONT_SIZE').AsInteger; // 10;
-
-    pages             := '';
-
-  end; // with KorexMaster do
-
-
-end;
-
-
-procedure Tfrm_CJ_Korea.SetKorexInvoice_Type1(KorexMaster: TKorexMaster);   // 1장의 송장에 인쇄할 내용을 정의
-//        strBarArriveCode  : string;   // strRecv_code, // '1830',// BarArriveCode,                                                KorexMaster.END_NO;
-//        strmemArriveCode  : string;   // strRecv_code,                                                                            KorexMaster.END_NO;
-//        strmemArrivename  : string;   // strRecv_code + ' ' + strRecv_addr_town, // '183 진정읍',// memArrivename,
-//        strmemSendCode    : string;   // copy(strSend_code, 1, 3) + '-' + copy(strSend_code, 4, 1), // '152-0',// memSendCode,
-//        strBarInvoiceNo1  : string;   // strInvoiceNo, // BarInvoiceNo1,         // strInvoiceNo := KorexMaster.INVOICENO;
-//        strmemItemList    : string;   // ItemList_sub.Text, // memItemList,
-//        strBarInvoiceNo2  : string;   // strInvoiceNo, // BarInvoiceNo2,
-//        strmemInvoiceNo1  : string;   // strInvoiceNo, // memInvoiceNo1,
-//        strmemDate1       : string;   // FormatDateTime('YYYY.MM.DD', now), // memDate1,
-//        strmemInvoiceNo2  : string;   // strInvoiceNo, // memInvoiceNo2,
-//        strmemDate2       : string;   // FormatDateTime('YYYY.MM.DD', now), // memDate2,
-//        strmemFareType    : string;   // GetFareName(strFareCode), // memFareType,
-//        strmemFarePrice   : string;   // strFarePrice, // memFarePrice, //착불, 선불에 대한 금액은 어떻게 하나? 김상국대리한테 물어보고 작업
-//        strmemReceiveData1: string;   // strReceiveData1, // memReceiveData1,
-//        strmemSendData1   : string;   // strSendData1, // memSendData1,
-//        strmemReceiveData2: string;   // strReceiveData2, // memReceiveData2,
-//        strmemSendData2   : string;   // strSendData2, // memSendData2
-//        strSenderRemark   : string;   // strSenderRemark,
-//        strmem_zn_dv      : string;   // strRecv_zn_dv := KorexMaster.SUB_END_NO;
-//        strmem_end_nm     : string;   // strend_nm     := KorexMaster.END_NM;
-//        strmem_mang_brn_nm: string;   // strmang_brn_nm
-//        strmem_dlv_emp_nm : string;   // strdlv_emp_nm,                 // strdlv_emp_nm := KorexMaster.CLDV_EMP_NM;
-//        strRemark         : string;   // strRemark,
-//        strSenderMsg      : string);  // strSenderMsg
+procedure Tfrm_Barcode_Sample.SetKorexInvoice_Type1(oRS: TFDQuery); // 1장의 출력물의 내용을 정의
 begin
   with szReport do
   begin
-    TfrxBarCodeView (FindObject('BarArriveCode')).Text              := KorexMaster.END_NO;                                  //strBarArriveCode;              // strRecv_code  := KorexMaster.END_NO;
-    TfrxBarCodeView (FindObject('BarArriveCode')).Expression        := QuotedStr(KorexMaster.END_NO);                       //QuotedStr(strBarArriveCode);   // strRecv_code  := KorexMaster.END_NO;
-    TfrxMemoView    (FindObject('memArriveCode')).Text              := copy(KorexMaster.END_NO, 2, 3);                      //copy(strmemArriveCode, 2, 3);  // strRecv_code  := KorexMaster.END_NO;
-    TfrxMemoView    (FindObject('memArriveCode1st')).Text           := copy(KorexMaster.END_NO, 1, 1);                      // strRecv_code  := KorexMaster.END_NO;
-    TfrxMemoView    (FindObject('mem_zn_dv')).Text                  := '-' + KorexMaster.SUB_END_NO;                        // strRecv_zn_dv := KorexMaster.SUB_END_NO;
-    TfrxMemoView    (FindObject('mem_end_nm')).Text                 := KorexMaster.END_NM;                                  // strend_nm     := KorexMaster.END_NM;
-    TfrxMemoView    (FindObject('mem_mang_brn_nm')).Text            := KorexMaster.MAN_BRAN_NM;                             // strmang_brn_nm //strmem_mang_brn_nm;
-    TfrxMemoView    (FindObject('mem_dlv_emp_nm')).Text             := '배달사원:' + KorexMaster.CLDV_EMP_NM;               // strmem_dlv_emp_nm;
-    TfrxBarCodeView (FindObject('BarInvoiceNo1')).Text              := KorexMaster.INVOICENO;                               // strBarInvoiceNo1;
-    TfrxBarCodeView (FindObject('BarInvoiceNo1')).Expression        := KorexMaster.INVOICENO;                               // strBarInvoiceNo1;
-    TfrxMemoView    (FindObject('mem_BarInvoiceNo1_caption')).Text  := GetInvoiceNoCaption(KorexMaster.INVOICENO);          //GetInvoiceNoCaption(strBarInvoiceNo1);
-    TfrxMemoView    (FindObject('memItemList')).Font.Size           := KorexMaster.font_size;                               // 10; // szFontSize;
-    TfrxMemoView    (FindObject('memItemList')).Text                := KorexMaster.detail_item_data;                        //strmemItemList; // 1장의 송장에 들어가는  상품 관련정보의 완전한 표현
-    TfrxBarCodeView (FindObject('BarInvoiceNo2')).Text              := KorexMaster.INVOICENO;                               // strBarInvoiceNo2;  // strInvoiceNo := KorexMaster.INVOICENO;
-    TfrxBarCodeView (FindObject('BarInvoiceNo2')).Expression        := KorexMaster.INVOICENO;                               // strBarInvoiceNo2;  // strInvoiceNo := KorexMaster.INVOICENO;
-    TfrxMemoView    (FindObject('mem_BarInvoiceNo2_caption')).Text  := GetInvoiceNoCaption(KorexMaster.INVOICENO);          // GetInvoiceNoCaption(strBarInvoiceNo1);
-    TfrxMemoView    (FindObject('memInvoiceNo1')).Text              := GetInvoiceNoCaption(KorexMaster.INVOICENO);          // GetInvoiceNoCaption(strBarInvoiceNo1);
-    TfrxMemoView    (FindObject('memDate1')).Text                   := KorexMaster.reg_datetime;                            // FormatDateTime('YYYY.MM.DD', KorexMaster.reg_datetime); //FormatDateTime('YYYY.MM.DD', now); // strmemDate1;
-    TfrxMemoView    (FindObject('memInvoiceNo2')).Text              := GetInvoiceNoCaption(KorexMaster.INVOICENO);          // GetInvoiceNoCaption(strBarInvoiceNo1);
-    TfrxMemoView    (FindObject('memDate2')).Text                   := KorexMaster.reg_datetime;                            // FormatDateTime('YYYY.MM.DD', KorexMaster.reg_datetime); //FormatDateTime('YYYY.MM.DD', now); // strmemDate2;
-    TfrxMemoView    (FindObject('memFareType')).Text                := KorexMaster.frt_name;                                //strmemFareType;  // strFareCode := KorexMaster.frt_code;
-    TfrxMemoView    (FindObject('memFarePrice')).Text               := KorexMaster.FRT_UPRICE;                              //strmemFarePrice;     //  // strFarePrice, // memFarePrice, //착불, 선불에 대한 금액
-    TfrxMemoView    (FindObject('memReceiveData1')).Text            := KorexMaster.RCVR_ADDR  + ' ' +
-                                                                       KorexMaster.RCVR_DETAIL_ADDR  + #13#10 +
-                                                                       KorexMaster.RCVR_NM  + ' ' +
-                                                                       getSecretTel(gm_getTel(KorexMaster.RCVR_CELL_NO)) +
-                                                                       '   ' +
-                                                                       getSecretTel(gm_getTel(KorexMaster.RCVR_TEL_NO));    // strmemReceiveData1;
-    TfrxMemoView    (FindObject('memSendData1')).Text               := KorexMaster.SENDR_ADDR + ' ' +
-                                                                       KorexMaster.SENDR_DETAIL_ADDR + #13#10 +
-                                                                       KorexMaster.SENDR_NM + ' ' +
-                                                                       gm_getTel(KorexMaster.SENDR_TEL_NO);                 // strmemSendData1;
-    TfrxMemoView    (FindObject('memReceiveData2')).Text            := KorexMaster.RCVR_ADDR  + ' ' +
-                                                                       KorexMaster.RCVR_DETAIL_ADDR  + #13#10 +
-                                                                       KorexMaster.RCVR_NM  + ' ' +
-                                                                       gm_getTel(KorexMaster.RCVR_CELL_NO) +
-                                                                       '   ' +
-                                                                       gm_getTel(KorexMaster.RCVR_TEL_NO);                  //strmemReceiveData2;
-    TfrxMemoView    (FindObject('memSendData2')).Text               := KorexMaster.SENDR_ADDR + ' ' +
-                                                                       KorexMaster.SENDR_DETAIL_ADDR + #13#10 +
-                                                                       KorexMaster.SENDR_NM + ' ' +
-                                                                       gm_getTel(KorexMaster.SENDR_TEL_NO);                 // strmemSendData2;
-    TfrxMemoView    (FindObject('memSenderRemark')).Text            := KorexMaster.SENDR_REMARK;                            // strSenderRemark; //strSenderRemark := KorexMaster.SENDR_REMARK;
-    TfrxMemoView    (FindObject('memRemark')).Text                  := KorexMaster.REMARK;                                  // StringReplace(StringReplace(strRemark, '<', '', [rfReplaceAll]), '>', '', [rfReplaceAll]);  // strRemark := KorexMaster.REMARK;
-    TfrxMemoView    (FindObject('mem_senderRemark')).Text           := KorexMaster.rcvr_remark;                             // strSenderMsg;  // strSenderMsg := KorexMaster.rcvr_remark;
-
-
-    if KorexMaster.INVOICENO = '' then  //if strBarInvoiceNo1 = '' then
-    begin
-      TfrxBarCodeView(FindObject('BarArriveCode'))  .Visible := false;
-      TfrxBarCodeView(FindObject('mem_zn_dv'))      .Visible := false;
-      TfrxBarCodeView(FindObject('BarInvoiceNo1'))  .Visible := false;
-      TfrxBarCodeView(FindObject('mem_dlv_emp_nm')) .Visible := false;
-      TfrxBarCodeView(FindObject('BarInvoiceNo2'))  .Visible := false;
-
-      // 아래로직은 이 함수 바깥에서 처리한다
-//      inPage_suv := inPage_suv + 1;
-//      TfrxMemoView(FindObject('memPages')).Text := '[' + inttostr(inPage) + '-' + inttostr(inPage_suv) + ' / ' + inttostr(inPages) + ']';
-    end
-    else
-    begin
-      // 아래로직은 이 함수 바깥에서 처리한다
-//      inPage := inPage + 1;
-//      TfrxMemoView(FindObject('memPages')).Text := '[' + inttostr(inPage) + ' / ' + inttostr(inPages) + ']';
-    end;
-
-    TfrxMemoView(FindObject('memPages')).Text := KorexMaster.pages;
-
-
+    TfrxBarCodeView (FindObject('Barcode_Ord_No')).Text       := oRS.FieldByName('BAR_CODE').AsString;
+    TfrxBarCodeView (FindObject('Barcode_Ord_No')).Expression := oRS.FieldByName('BAR_CODE').AsString;
+    TfrxMemoView    (FindObject('Memo_Deal_Comp_Name')).Text  := oRS.FieldByName('DEAL_COMP_NAME').AsString;
+    TfrxMemoView    (FindObject('Memo_Box_no')).Text          := oRS.FieldByName('BOX_NO').AsString;
     PrepareReport(false);
-    TfrxBarCodeView(FindObject('BarArriveCode'))  .Visible := true;
-    TfrxBarCodeView(FindObject('mem_zn_dv'))      .Visible := true;
-    TfrxBarCodeView(FindObject('BarInvoiceNo1'))  .Visible := true;
-    TfrxBarCodeView(FindObject('mem_dlv_emp_nm')) .Visible := true;
-    TfrxBarCodeView(FindObject('BarInvoiceNo2'))  .Visible := true;
   end;
-
-  // TfrxMemoView(FR_invoice.FindObject('mem_BarArriveCode_caption')).Text := strBarArriveCode;
-  // TfrxMemoView(FR_invoice.FindObject('memArrivename')).Text := strmemArrivename;
-  // TfrxMemoView(FR_invoice.FindObject('memSendCode')).Text := strmemSendCode;
-  // TfrxMemoView(FindObject('memItemList')).Clipped := false;
-
 end;
 
 
-procedure Tfrm_CJ_Korea.FormCreate(Sender: TObject);
+procedure Tfrm_Barcode_Sample.FormCreate(Sender: TObject);
 begin
   InitPrinterGrid; // 선택가능한 프린터 보여주기
 end;
 
-procedure Tfrm_CJ_Korea.FormShow(Sender: TObject);
+procedure Tfrm_Barcode_Sample.FormShow(Sender: TObject);
 begin
   //
 end;
 
-procedure Tfrm_CJ_Korea.FR_InvoiceBeforePrint(Sender: TfrxReportComponent);
+procedure Tfrm_Barcode_Sample.FR_InvoiceBeforePrint(Sender: TfrxReportComponent);
 var
   i: integer;
 begin
@@ -525,7 +329,7 @@ begin
 end;
 
 
-function Tfrm_CJ_Korea.Get_Valid_Printer: string;
+function Tfrm_Barcode_Sample.Get_Valid_Printer: string;
 var
   idx: Integer;
 begin
@@ -542,7 +346,7 @@ begin
   end;
 end;
 
-procedure Tfrm_CJ_Korea.InitPrinterGrid;
+procedure Tfrm_Barcode_Sample.InitPrinterGrid;
 var
   idx: Integer;
   idx_2: Integer;
@@ -603,7 +407,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_01(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_01(var KorexMaster: TKorexMaster);
 begin
 
 
@@ -696,7 +500,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_02(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_02(var KorexMaster: TKorexMaster);
 begin
 
 
@@ -788,7 +592,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_03(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_03(var KorexMaster: TKorexMaster);
 begin
 
 
@@ -880,7 +684,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_04(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_04(var KorexMaster: TKorexMaster);
 begin
 
 
@@ -973,7 +777,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_05(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_05(var KorexMaster: TKorexMaster);
 begin
 
 
@@ -1066,7 +870,7 @@ end;
 
 
 
-procedure Tfrm_CJ_Korea.SetKoreaMaster_onePageTEST_06(var KorexMaster: TKorexMaster);
+procedure Tfrm_Barcode_Sample.SetKoreaMaster_onePageTEST_06(var KorexMaster: TKorexMaster);
 begin
 
 

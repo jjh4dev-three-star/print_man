@@ -1,4 +1,4 @@
-{
+ï»¿{
   Copyright (C) 2005 Fabio Almeida
   fabiorecife@yahoo.com.br
 
@@ -19,11 +19,11 @@
 }
 (*
 
-  @abstract( Contém todas as classes para manipular o formato JSON. )
+  @abstract( Cont? todas as classes para manipular o formato JSON. )
 
-  As principais classes são :  TJSONObject,  TJSONArray .
+  As principais classes s? :  TJSONObject,  TJSONArray .
 
-  OBS: A unit uJSON foi adaptada de uma implementação para json em Java ver
+  OBS: A unit uJSON foi adaptada de uma implementaè±«o para json em Java ver
   http://www.json.org .
 
   JSON =  JavaScript Object Notation
@@ -54,20 +54,20 @@ uses
 
 Type
     { @abstract(Classe pai de todas as classes em uJSON , resolve o problema de
-      impedância entre a classe java Object e a classe delphi TObject)
+      imped?cia entre a classe java Object e a classe delphi TObject)
     }
     TZAbstractObject = class
-      { retorna true se value é igual ao objeto}
+      { retorna true se value ?igual ao objeto}
       function equals(const Value: TZAbstractObject): Boolean; virtual;
-      { código hash do objeto , usa-se o endereço de memória}
+      { c?igo hash do objeto , usa-se o endere? de mem?ia}
       function hash: LongInt;
       { clona o objeto
        @return ( um TZAbstractObject )}
       function Clone: TZAbstractObject; virtual;
-      {retorna a representação com string do objeto
+      {retorna a representaè±«o com string do objeto
        @return (uma string)}
       function toString: string; virtual;
-      {retorna true se o parâmetro Value é uma instância de TZAbstractObject }
+      {retorna true se o par?etro Value ?uma inst?cia de TZAbstractObject }
       function instanceOf(const Value: TZAbstractObject): Boolean;
     end;
 
@@ -79,7 +79,7 @@ Type
     NumberFormatException = class (Exception) end;
     { @abstract(wrapper para NullPointerException do java) }
     NullPointerException = class (Exception) end;
-    { @abstract(as features não implementadas geram esta exception) }
+    { @abstract(as features n? implementadas geram esta exception) }
     NotImplmentedFeature = class (Exception) end;
     TJSONArray = class ;
     _Number =  class ;
@@ -93,7 +93,7 @@ Type
     end;
 
     (**
-      @abstract(Responsável por auxiliar na análise Léxica de uma string que representa um JSON.)
+      @abstract(Respons?el por auxiliar na an?ise L?ica de uma string que representa um JSON.)
     *)
     JSONTokener = class  (TZAbstractObject)
      public
@@ -426,7 +426,7 @@ var
 implementation
 
 const
-  CROTINA_NAO_IMPLEMENTADA :string = 'Rotina Não Implementada';
+  CROTINA_NAO_IMPLEMENTADA :string = 'Rotina N? Implementada';
 
 procedure newNotImplmentedFeature () ;
 begin
@@ -921,7 +921,7 @@ end;
      *)
 function JSONTokener.syntaxError(_message: string): ParseException;
 begin
- result := ParseException.create (_message + toString()+' próximo a : '
+ result := ParseException.create (_message + toString()+' pr?imo a : '
  + copy (toString(),self.myIndex,10), self.myIndex);
 end;
 

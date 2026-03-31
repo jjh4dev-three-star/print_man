@@ -1,4 +1,4 @@
-object frm_CJ_Korea: Tfrm_CJ_Korea
+﻿object frm_CJ_Korea: Tfrm_CJ_Korea
   Left = 0
   Top = 0
   Caption = 'CJ'#45824#54620#53685#50868

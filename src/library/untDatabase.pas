@@ -1,4 +1,4 @@
-unit untDatabase;
+ï»¿unit untDatabase;
 
 interface
 
@@ -96,7 +96,7 @@ begin
       on E: Exception do
       begin
         //raise Exception.Create(e.Message);
-        ShowMessage(PChar('Link DB ¿¬°á ½ÇÆÐ' + #13 + #10 + E.Message)); // Vcl.Dialogs;
+        ShowMessage(PChar('Link DB ì—°ê²° ì‹¤íŒ¨' + #13 + #10 + E.Message)); // Vcl.Dialogs;
 
         Result := False;
       end;
@@ -136,7 +136,7 @@ begin
       on E: Exception do
       begin
         //raise Exception.Create(e.Message);
-        //ShowMessage(PChar('Link DB ¿¬°á ½ÇÆÐ' + #13 + #10 + E.Message)); // Vcl.Dialogs;
+        //ShowMessage(PChar('Link DB ì—°ê²° ì‹¤íŒ¨' + #13 + #10 + E.Message)); // Vcl.Dialogs;
 
         Result := False;
       end;

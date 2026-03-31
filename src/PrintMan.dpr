@@ -1,4 +1,4 @@
-program PrintMan;
+ï»¿program PrintMan;
 
 uses
   Vcl.Forms,
@@ -13,7 +13,8 @@ uses
   untGlobal in 'library\colib\untGlobal.pas',
   unt_CommLib in 'library\colib\unt_CommLib.pas',
   unt_CJ_Korea in 'unt_CJ_Korea.pas' {frm_CJ_Korea},
-  uJSON in 'uJSON.pas';
+  uJSON in 'uJSON.pas',
+  unt_Barcode_Sample in 'unt_Barcode_Sample.pas' {frm_Barcode_Sample};
 
 {$R *.res}
 
@@ -43,10 +44,11 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Tablet Light');
-  Application.Title := 'ÅÃ¹è ¼ÛÀå Ãâ·Â(PrintMan)';
+  Application.Title := 'ì¶œë ¥ëŒ€ê¸°(PrintMan)';
   Application.CreateForm(Tfrm_Main, frm_Main);
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(Tfrm_HttpReqListen, frm_HttpReqListen);
   Application.CreateForm(Tfrm_CJ_Korea, frm_CJ_Korea);
+  Application.CreateForm(Tfrm_Barcode_Sample, frm_Barcode_Sample);
   Application.Run;
 end.

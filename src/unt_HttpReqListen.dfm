@@ -1,4 +1,4 @@
-object frm_HttpReqListen: Tfrm_HttpReqListen
+﻿object frm_HttpReqListen: Tfrm_HttpReqListen
   Left = 0
   Top = 0
   AlphaBlend = True
@@ -50,7 +50,7 @@ object frm_HttpReqListen: Tfrm_HttpReqListen
     OnCommandOther = IdHTTPServer1CommandOther
     OnCreatePostStream = IdHTTPServer1CreatePostStream
     OnCommandGet = IdHTTPServer1CommandGet
-    Left = 360
-    Top = 208
+    Left = 456
+    Top = 224
   end
 end

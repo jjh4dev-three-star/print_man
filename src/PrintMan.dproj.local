@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.836,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Login.dfm</Transaction>
     <Transaction>1899-12-30 00:00:00.000.292,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\prj_file\InvoicePrint.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.354,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Main.dfm</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.938,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\prj_file\PrintMan.dproj=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\PrintMan.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.241,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_HttpReqListen.dfm</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.825,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\library\untDatabase.dfm</Transaction>
     <Transaction>1899-12-30 00:00:00.000.252,D:\job_invoice_print\src\unt_CJ_Daetong.dfm=D:\job_invoice_print\src\Unit1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.557,=D:\job_invoice_print_git\src\unt_Barcode_Sample.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.241,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_HttpReqListen.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.836,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Login.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.825,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.dfm=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\library\untDatabase.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.836,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.pas=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Login.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.825,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.pas=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\library\untDatabase.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.241,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.pas=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_HttpReqListen.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.836,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\Unit1.pas=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Login.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.938,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\prj_file\PrintMan.dproj=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\PrintMan.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.354,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\src\unt_Main.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.322,D:\job_invoice_print\src\unt_CJ_Korea.dfm=D:\job_invoice_print\src\Unit1.dfm</Transaction>
     <Transaction>1899-12-30 00:00:00.000.209,D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\prj_file\InvoicePrint.dproj=D:\OneDriveDir\OneDrive\com_tech\job_invoice_print\prj_file\PrintMan.dproj</Transaction>
