@@ -1,10 +1,8 @@
-ï»¿unit unt_Main;
+unit unt_Main;
 
 interface
 
 uses
-  frxClass, frxBarcode,
-  
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, System.IniFiles,
   Vcl.AppEvnts, Vcl.Menus, FireDAC.Stan.Intf, FireDAC.Stan.Option,
@@ -26,7 +24,6 @@ type
     N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
-    frxReport1: TfrxReport;
     procedure ApplicationEvents1Minimize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TrayIcon1DblClick(Sender: TObject);
@@ -37,7 +34,6 @@ type
     procedure N3Click(Sender: TObject);
     procedure N6Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
-    procedure N8_BarcodePrintClick(Sender: TObject);
   private
     { Private declarations }
     procedure BeginListen;
@@ -51,47 +47,25 @@ type
 
 var
   frm_Main: Tfrm_Main;
-  //m_LoginYN: string; // ë¡œê·¸ì¸ì„±ê³µì—¬ë¶€
+  //m_LoginYN: string; // ·Î±×ÀÎ¼º°ø¿©ºÎ
 
 implementation
 
 uses
-
-  
-  untGlobal, untDatabase, unt_HttpReqListen, unt_Login, unt_CJ_Korea,
-  unt_Barcode_Sample; // unt_CJ_Daetong,
+  untGlobal, untDatabase, unt_HttpReqListen, unt_Login, unt_CJ_Daetong, unt_CJ_Korea;
 
 {$R *.dfm}
 
 
-procedure Tfrm_Main.TrayIcon1DblClick(Sender: TObject);
-begin
-  //Exit;
-
-  // íŠ¸ë ˆì´ì•„ì´ì½˜ í´ë¦­ë•Œë§ˆë‹¤ , ë©”ì¸í¼ì„ ë³´ì—¬ì¤ë‹¤ ê°ì¶”ê¸°ë¥¼ ë°˜ë³µí•˜ì§€ ì•ŠëŠ”ë‹¤
-  // í° í™”ë©´ì´ í•„ìš”í•˜ë©´ íŠ¸ë ˆì´ì•„ì´ì½˜ì— ë©”ë‰´ë¥¼ ì¶”ê°€í•œë‹¤
-  TrayIcon1.Visible := False;
-  Show(); //Self.Show;
-  WindowState := wsNormal;
-  Application.BringToFront();
-
-  //BeginListen;
-end;
 
 procedure Tfrm_Main.ApplicationEvents1Minimize(Sender: TObject);
 begin
-
-  // í”„ë¡œê·¸ë¨ ì‹œì‘==>íƒ€ì´ë¨¸0.01ì´ˆ í›„ íŠ¸ë ˆì´ ì•„ì´ì½˜ì—ì„œë§Œ ë³´ì´ë„ë¡ í•œë‹¤
-
   //Show();
+  TrayIcon1DblClick(Sender);
 
-  // í˜„ì¬ëŠ” ì•„ë¬´ê²ƒë„ ì•ˆí•œë‹¤
-  TrayIcon1DblClick(Sender); // "íŠ¸ë ˆì´ì•„ì´ì½˜ <--> ë©”ì¸í¼" í† ê¸€ì„ í•˜ê¸°ìœ„í•œ í”„ë¡œì‹œì ¸
+  Hide(); // ¸ŞÀÎÆû °¨Ãç
 
-
-  Hide(); // ë©”ì¸í¼ ê°ì¶° Self.Hide;
-  WindowState := wsMinimized; // ë©”ì¸í¼ í¬ê¸° ìµœì†Œí™”  Self.WindowState
-
+  WindowState := wsMinimized; // ¸ŞÀÎÆû Å©±â ÃÖ¼ÒÈ­
 
   TrayIcon1.Visible := True;
   TrayIcon1.Animate := True;
@@ -99,14 +73,26 @@ begin
 
 end;
 
+procedure Tfrm_Main.BeginListen;
+begin
+  frm_HttpReqListen.Show;
+  frm_HttpReqListen.IdHTTPServer1.Active := True;
+end;
+procedure Tfrm_Main.StopListen;
+begin
+  frm_HttpReqListen.Hide;
+  frm_HttpReqListen.IdHTTPServer1.Active := False;
+end;
+
 procedure Tfrm_Main.Timer1Timer(Sender: TObject);
 begin
+
   Timer1.Enabled := False;
 
-  ApplicationEvents1Minimize(Sender); // í”„ë¡œê·¸ë¨ ì‹œì‘==>íƒ€ì´ë¨¸0.01ì´ˆ í›„ íŠ¸ë ˆì´ ì•„ì´ì½˜ì—ì„œë§Œ ë³´ì´ë„ë¡ í•œë‹¤
+  ApplicationEvents1Minimize(Sender);
 
 
-  //self.Caption := 'ì†¡ì¥ ì¶œë ¥ ëŒ€ê¸°ì¤‘';
+  //self.Caption := '¼ÛÀå Ãâ·Â ´ë±âÁß';
 
   {
   self.AlphaBlend := True;
@@ -129,41 +115,31 @@ begin
 
 end;
 
-
-procedure Tfrm_Main.BeginListen;
+procedure Tfrm_Main.TrayIcon1DblClick(Sender: TObject);
 begin
-  frm_HttpReqListen.Show;
-  frm_HttpReqListen.IdHTTPServer1.Active := True;
+  Exit;
+  TrayIcon1.Visible := False;
+  Show(); //Self.Show;
+  WindowState := wsNormal;
+  Application.BringToFront();
+
+  //BeginListen;
 end;
-
-procedure Tfrm_Main.StopListen;
-begin
-  frm_HttpReqListen.Hide;
-  frm_HttpReqListen.IdHTTPServer1.Active := False;
-end;
-
-
-
-
 
 procedure Tfrm_Main.FormShow(Sender: TObject);
 var
   oFrm: Tfrm_Login;
-  //oFrm2: Tfrm_CJ_Daetong;
+  oFrm2: Tfrm_CJ_Daetong;
   //oFrm3: Tfrm_CJ_Korea;   frm_CJ_Korea
   szModalResult: Boolean;
 begin
-
-  //frm_Barcode_Sample.show;
-
-  { TODO 2 -ojjh -cë¡œê·¸ì¸ì¸ì¦ : ë¡œê·¸ì¸ ì°½ ì—´ê¸°ì „ ë¼ì´ì„¼ìŠ¤ íŒŒì¼ë¡œ ë¨¼ì € ì¸ì¦í•˜ê¸° }
-
   if gszLoginYN = 'Y' then
   begin
 
   end
   else
   begin
+
     oFrm := Tfrm_Login.Create(self);
     try
       try
@@ -177,12 +153,12 @@ begin
           gszLoginYN := 'Y';
           Timer1.Enabled := True;
 
-          // ëŒ€í†µì†¡ì¥ì¶œë ¥í¼
+          // ´ëÅë¼ÛÀåÃâ·ÂÆû
 //          oFrm2 := Tfrm_CJ_Daetong.Create(self);
 //          oFrm2.Show;
 
 
-          // ëŒ€í†µì†¡ì¥ì¶œë ¥í¼
+          // ´ëÅë¼ÛÀåÃâ·ÂÆû
           //oFrm3 := Tfrm_CJ_Korea.Create(self);
           //frm_CJ_Korea.Show;
 
@@ -205,19 +181,19 @@ end;
 
 procedure Tfrm_Main.N2Click(Sender: TObject);
 begin
-  // íŒì—…ë©”ë‰´ - í™”ë©´ë³´ì´ê¸°
+  // ÆË¾÷¸Ş´º - È­¸éº¸ÀÌ±â
   TrayIcon1DblClick(Sender);
 end;
 
 procedure Tfrm_Main.N3Click(Sender: TObject);
 begin
-  // íŒì—…ë©”ë‰´ - í™”ë©´ê°ì¶”ê¸°
+  // ÆË¾÷¸Ş´º - È­¸é°¨Ãß±â
   ApplicationEvents1Minimize(Sender);
 end;
 
 procedure Tfrm_Main.N4Click(Sender: TObject);
 begin
-  // íŒì—…ë©”ë‰´ - ì¢…ë£Œ
+  // ÆË¾÷¸Ş´º - Á¾·á
   Close;
 end;
 
@@ -225,30 +201,25 @@ end;
 
 procedure Tfrm_Main.N6Click(Sender: TObject);
 begin
-  //ì†¡ì¥ì¶œë ¥ëŒ€ê¸°
+  //¼ÛÀåÃâ·Â´ë±â
   BeginListen;
 end;
 
 procedure Tfrm_Main.N7Click(Sender: TObject);
 begin
-  //ì†¡ì¥ì¶œë ¥ëŒ€ê¸° ì¤‘ë‹¨
+  //¼ÛÀåÃâ·Â´ë±â Áß´Ü
   StopListen;
-end;
-
-procedure Tfrm_Main.N8_BarcodePrintClick(Sender: TObject);
-begin
-  frm_Barcode_Sample.do_Print_CJ('jjh103', '20260312_194351_F04A1');
 end;
 
 
 procedure Tfrm_Main.FormCreate(Sender: TObject);
 begin
 
-  TrayIcon1.Hint := 'ì¶œë ¥ ëŒ€ê¸° ì¤‘(ëª¨ë¹„ì–´ìŠ¤)';
+  TrayIcon1.Hint := '¼ÛÀåÃâ·Â ´ë±â Áß(¸ğºñ¾î½º)';
   TrayIcon1.AnimateInterval := 1000;
 
-  //TrayIcon1.BalloonTitle := 'ëª¨ë¹„ì–´ìŠ¤ì†¡ì¥ì¶œë ¥';
-  TrayIcon1.BalloonHint := 'ì¶œë ¥ ëŒ€ê¸° ì¤‘(ëª¨ë¹„ì–´ìŠ¤)';
+  //TrayIcon1.BalloonTitle := '¸ğºñ¾î½º¼ÛÀåÃâ·Â';
+  TrayIcon1.BalloonHint := '¼ÛÀåÃâ·Â ´ë±â Áß(¸ğºñ¾î½º)';
   TrayIcon1.BalloonFlags := bfNone; // bfInfo;
 
 end;

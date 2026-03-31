@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="6.0" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44254.5" ReportOptions.Description.Text="" ReportOptions.LastChange="44254.5" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="100" PaperHeight="150" PaperSize="256" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="226.7718" Left="0" Top="18.89765" Width="340.1577" ColumnWidth="0" ColumnGap="0" DataSetName="" RowCount="1">
+      <TfrxBarcodeView Name="Barcode1" AllowExpressions="False" AutoSize="False" CalcCheckSum="False" ShiftMode="smDontShift" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Left="37.7953" Top="37.7953" Width="200" Height="80" BarType="bcCode128" CalcCheckSum="True" Expression="" Text="1234567890" Zoom="1"/>
+      <TfrxMemoView Name="Memo1" AllowExpressions="False" ShiftMode="smDontShift" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Left="37.7953" Top="132.2835" Width="200" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="1234567890"/>
+      <TfrxMemoView Name="MemoTitle" AllowExpressions="False" ShiftMode="smDontShift" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Left="37.7953" Top="11.33859" Width="200" Height="22.67718" Font.Charset="1" Font.Color="-16777208" Font.Height="-19" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="Test Barcode Print"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

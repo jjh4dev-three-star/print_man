@@ -1,4 +1,4 @@
-unit unt_CommLib;
+ï»¿unit unt_CommLib;
 
 interface
 
@@ -14,14 +14,14 @@ uses
 
 
 
-function gm_Delivery_Linkage_Insert_Invoice_Detail_For_SendToServer_EX( // ÅÃ¹è»ç¼­¹ö Àü¼Û  µ¥ÀÌÅÍ µğÅ×ÀÏ µî·Ï ¼Óµµ°³¼±ÆÇ : Á¤Á¤Çå
+function gm_Delivery_Linkage_Insert_Invoice_Detail_For_SendToServer_EX( // íƒë°°ì‚¬ì„œë²„ ì „ì†¡  ë°ì´í„° ë””í…Œì¼ ë“±ë¡ ì†ë„ê°œì„ íŒ : ì •ì •í—Œ
   const szenter_item_cd :string;
   const szenter_item_nm :string;
   const szenter_item_qty:string;
   const szSeller_Code   :string;
   const szWho_Code      :string): string;
 
-function gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(  // send_to_server_invoice ¿¡ ÀÎ¼­Æ®: ÅÃ¹è»ç¼­¹ö Àü¼Û  µ¥ÀÌÅÍ ¸¶½ºÅÍ µî·Ï ¼Óµµ°³¼±ÆÇ : Á¤Á¤Çå
+function gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(  // send_to_server_invoice ì— ì¸ì„œíŠ¸: íƒë°°ì‚¬ì„œë²„ ì „ì†¡  ë°ì´í„° ë§ˆìŠ¤í„° ë“±ë¡ ì†ë„ê°œì„ íŒ : ì •ì •í—Œ
   const nSeq                :string;
   const szinvoiceno         :string;
   const szDelivery_Code     :string;
@@ -50,8 +50,8 @@ function gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(  // send
   const szrcpt_code         :string;
   const szBox_Type          :string
   ): string;
-function gm_getSQL(szSQL: string): string; // SQL ¹®Áß ' -> '' ·Î º¯°æÇÑµÚ ¸®ÅÏ
-function gm_update_printed_invoice_list( // ¼ÛÀåÃâ·Â Ä«¿îÆ® ¹× ½Ã°£ ¾÷µ¥ÀÌÆ® ==> printed_invoice_list
+function gm_getSQL(szSQL: string): string; // SQL ë¬¸ì¤‘ ' -> '' ë¡œ ë³€ê²½í•œë’¤ ë¦¬í„´
+function gm_update_printed_invoice_list( // ì†¡ì¥ì¶œë ¥ ì¹´ìš´íŠ¸ ë° ì‹œê°„ ì—…ë°ì´íŠ¸ ==> printed_invoice_list
   const szSeller_Code,
   szWarehouse_code,
   szDelivery_Code,
@@ -70,10 +70,10 @@ function gm_update_printed_invoice_list( // ¼ÛÀåÃâ·Â Ä«¿îÆ® ¹× ½Ã°£ ¾÷µ¥ÀÌÆ® ==>
   sztran_bookno_seq,
   szInvoice_Type
   : string): string;
-function StringReplaceCharNotNum(sz_Source :string):string; // ¼ıÀÚ¸¸ÀÔ·ÂÇÏ¼¼¿ä ´ë½Å½á
+function StringReplaceCharNotNum(sz_Source :string):string; // ìˆ«ìë§Œì…ë ¥í•˜ì„¸ìš” ëŒ€ì‹ ì¨
 function SetStringStrEnd(const OptionStr: string; StrtStr, EndStr: string): string;
 function InsertLineFeed(OldString: string; InputIndex: integer): string;
-function gm_getZipNo(szZipno: string): string; // ¿ìÆí¹øÈ£ - »ğÀÔÈÄ ¸®ÅÏ
+function gm_getZipNo(szZipno: string): string; // ìš°í¸ë²ˆí˜¸ - ì‚½ì…í›„ ë¦¬í„´
 function gm_setDelivery_Sendr_Data(szSeller_Code, szWho_Code, szDelivery_code, szDelivery_userid: string): boolean;
 function InputText(const OldStr: string; AIndex: integer; InputStr: string): string;
 function gm_Delivery_GetMaxSeq_Send_To_Server_many(szSeqCount: integer; szSeller_Code: string; szWho_Code: string): string;
@@ -98,7 +98,7 @@ uses
 
 
 
-function gm_Delivery_Linkage_Insert_Invoice_Detail_For_SendToServer_EX( // ÅÃ¹è»ç¼­¹ö Àü¼Û  µ¥ÀÌÅÍ µğÅ×ÀÏ µî·Ï ¼Óµµ°³¼±ÆÇ : Á¤Á¤Çå
+function gm_Delivery_Linkage_Insert_Invoice_Detail_For_SendToServer_EX( // íƒë°°ì‚¬ì„œë²„ ì „ì†¡  ë°ì´í„° ë””í…Œì¼ ë“±ë¡ ì†ë„ê°œì„ íŒ : ì •ì •í—Œ
   const szenter_item_cd :string;
   const szenter_item_nm :string;
   const szenter_item_qty:string;
@@ -132,7 +132,7 @@ begin
   result := szSQL;
 end;
 
-function gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(  // send_to_server_invoice ¿¡ ÀÎ¼­Æ®: ÅÃ¹è»ç¼­¹ö Àü¼Û  µ¥ÀÌÅÍ ¸¶½ºÅÍ µî·Ï ¼Óµµ°³¼±ÆÇ : Á¤Á¤Çå
+function gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(  // send_to_server_invoice ì— ì¸ì„œíŠ¸: íƒë°°ì‚¬ì„œë²„ ì „ì†¡  ë°ì´í„° ë§ˆìŠ¤í„° ë“±ë¡ ì†ë„ê°œì„ íŒ : ì •ì •í—Œ
   const nSeq                :string;
   const szinvoiceno         :string;
   const szDelivery_Code     :string;
@@ -180,7 +180,7 @@ begin
 
   szSQL := '';
   szSQL := szSQL + '' + #13 + #10;
-  // µ¥ÀÌÅ¸°¡ ÀÖ´ÂÁö È®ÀÎ
+  // ë°ì´íƒ€ê°€ ìˆëŠ”ì§€ í™•ì¸
   // szSQL := szSQL + 'declare @Cnt int' + #13 + #10;
   // szSQL := szSQL + 'declare @nSeq bigint' + #13 + #10;
   // szSQL := szSQL + 'declare @nitem_Seq bigint' + #13 + #10;
@@ -197,7 +197,7 @@ begin
 
   /// //////////////////////
   // szSQL := szSQL + 'if @Cnt <> 0' + #13 + #10;
-  // beginÀÇ ³¡Àº µğÅ×ÀÏ Äõ¸®¸¦ ÀüºÎ ´õÇÏ°í endÇØÁØ´Ù
+  // beginì˜ ëì€ ë””í…Œì¼ ì¿¼ë¦¬ë¥¼ ì „ë¶€ ë”í•˜ê³  endí•´ì¤€ë‹¤
   // szSQL := szSQL + 'begin' + #13 + #10;
 
   // szSQL := szSQL + 'exec @nSeq = dbo.sp_GetMaxSeq_For_Send_To_Server ''' + szSeller_Code + ''', ''' + szWho_Code + ''' ' + #13 + #10;
@@ -275,13 +275,13 @@ begin
   Result := szSQL;
 end;
 
-function gm_getSQL(szSQL: string): string; // SQL ¹®Áß ' -> '' ·Î º¯°æÇÑµÚ ¸®ÅÏ
+function gm_getSQL(szSQL: string): string; // SQL ë¬¸ì¤‘ ' -> '' ë¡œ ë³€ê²½í•œë’¤ ë¦¬í„´
 begin
-  //¹®ÀÚ¿­¿¡ µû¿ÈÇ¥°¡ µé¾î¿À°Ô µÉ°æ¿ì ¿¡·¯°¡ ¹ß»ıÇÏ¿© ¼ÛÀåÀÌ »ÌÈ÷Áö ¾Ê´Â °æ¿ì ¹æÁö
+  //ë¬¸ìì—´ì— ë”°ì˜´í‘œê°€ ë“¤ì–´ì˜¤ê²Œ ë ê²½ìš° ì—ëŸ¬ê°€ ë°œìƒí•˜ì—¬ ì†¡ì¥ì´ ë½‘íˆì§€ ì•ŠëŠ” ê²½ìš° ë°©ì§€
   Result := StringReplace(szSQL, '''', '''''', [rfReplaceAll]);
 end;
 
-function gm_update_printed_invoice_list( // ¼ÛÀåÃâ·Â Ä«¿îÆ® ¹× ½Ã°£ ¾÷µ¥ÀÌÆ® ==> printed_invoice_list
+function gm_update_printed_invoice_list( // ì†¡ì¥ì¶œë ¥ ì¹´ìš´íŠ¸ ë° ì‹œê°„ ì—…ë°ì´íŠ¸ ==> printed_invoice_list
   const szSeller_Code,
   szWarehouse_code,
   szDelivery_Code,
@@ -307,7 +307,7 @@ begin
   //szDatetime := formatdatetime('yyyymmddhhnnss', now);
   result := '';
 
-  //¼ÛÀå¹øÈ£°¡ °ø¹éÀ¸·Î ¹ß¹øµÈ°ÍÀÌ ÀÖÀ¸¸é, Ãâ·ÂÈ½¼ö Ä«¿îÆ®¿¡ Ãß°¡ÇÏÁö ¾Êµµ·Ï
+  //ì†¡ì¥ë²ˆí˜¸ê°€ ê³µë°±ìœ¼ë¡œ ë°œë²ˆëœê²ƒì´ ìˆìœ¼ë©´, ì¶œë ¥íšŸìˆ˜ ì¹´ìš´íŠ¸ì— ì¶”ê°€í•˜ì§€ ì•Šë„ë¡
   if Trim(stringreplace(szInvoice_no, '-', '', [rfReplaceAll])) = ''  then
     exit;
 
@@ -386,7 +386,7 @@ begin
   result := szSQL;
 end;
 
-function StringReplaceCharNotNum(sz_Source :string):string; // ¼ıÀÚ¸¸ÀÔ·ÂÇÏ¼¼¿ä ´ë½Å½á
+function StringReplaceCharNotNum(sz_Source :string):string; // ìˆ«ìë§Œì…ë ¥í•˜ì„¸ìš” ëŒ€ì‹ ì¨
 begin
   sz_Source := StringReplace(sz_Source , ' ' , '', [rfReplaceAll]);
   sz_Source := StringReplace(sz_Source , '-' , '', [rfReplaceAll]);
@@ -413,8 +413,8 @@ var
   TempStr: string;
   idx: integer;
 begin
-  // ¼ÛÀåÃâ·Â¿¡ È°¿ëÇÏ±âÀ§ÇØ InputIndex ´ÙÀ½¿¡ °³Çà¹®ÀÚ¸¦ ³Ö¾îÁÖ±â À§ÇÑ ÀÛ¾÷
-  // InputIndexÀÇ ¹è¼ö·Î ¹®ÀÚ¿­ÀÌ ³¡³¯¶§±îÁö ³Ö¾îÁØ´Ù.
+  // ì†¡ì¥ì¶œë ¥ì— í™œìš©í•˜ê¸°ìœ„í•´ InputIndex ë‹¤ìŒì— ê°œí–‰ë¬¸ìë¥¼ ë„£ì–´ì£¼ê¸° ìœ„í•œ ì‘ì—…
+  // InputIndexì˜ ë°°ìˆ˜ë¡œ ë¬¸ìì—´ì´ ëë‚ ë•Œê¹Œì§€ ë„£ì–´ì¤€ë‹¤.
   Result := '';
   if Length(OldString) <= InputIndex then
   begin
@@ -426,18 +426,18 @@ begin
   modOldStrCount := Length(OldString) - (divOldStrCount * InputIndex);
   for idx := 1 to divOldStrCount do
   begin
-    // ¸¶Áö¸· ¹®ÀÚ¿­¿¡´Â °³Çà¹®ÀÚ¸¦ ³ÖÁö ¾Ê´Â´Ù.
+    // ë§ˆì§€ë§‰ ë¬¸ìì—´ì—ëŠ” ê°œí–‰ë¬¸ìë¥¼ ë„£ì§€ ì•ŠëŠ”ë‹¤.
     if idx <> divOldStrCount then
       Result := trim(Result + Copy(TempStr, (InputIndex * idx + 1) - InputIndex, InputIndex)) + #13#10 + '   '
     else
       Result := trim(Result + Copy(TempStr, (InputIndex * idx + 1) - InputIndex, InputIndex));
   end;
-  // ³ª¸ÓÁö ¹®ÀÚ¿­À» ³Ö¾îÁØ´Ù.
+  // ë‚˜ë¨¸ì§€ ë¬¸ìì—´ì„ ë„£ì–´ì¤€ë‹¤.
   if modOldStrCount <> 0 then
     Result := Result + #13#10 + '   ' + trim(RightStr(TempStr, modOldStrCount));
 end;
 
-function gm_getZipNo(szZipno: string): string; // ¿ìÆí¹øÈ£ - »ğÀÔÈÄ ¸®ÅÏ
+function gm_getZipNo(szZipno: string): string; // ìš°í¸ë²ˆí˜¸ - ì‚½ì…í›„ ë¦¬í„´
 begin
   szZipno := StringReplace(szZipno, '-', '', [rfReplaceAll]);
   Result := '';
@@ -583,11 +583,11 @@ end;
 
 function GetFareName(szCode: string): string;
 begin
-  // 01 : ¼±ºÒ, 02 : ÂøºÒ, 03 : ½Å¿ë, 04 : ÂøÁö½Å¿ë
+  // 01 : ì„ ë¶ˆ, 02 : ì°©ë¶ˆ, 03 : ì‹ ìš©, 04 : ì°©ì§€ì‹ ìš©
   if szCode = '0010' then
-    result := '½Å¿ë'
+    result := 'ì‹ ìš©'
   else if szCode = '0020' then
-    result := 'ÂøºÒ'
+    result := 'ì°©ë¶ˆ'
 
 end;
 
@@ -595,7 +595,7 @@ function g_strTodayDate_PC(nOption: integer = 0):string;
 begin
   if nOption = 0 then Result := Trim(FormatDateTime('yyyymmdd', now));
   if nOption = 1 then Result := Trim(FormatDateTime('yyyy-mm-dd', now));
-  //if nOption = 2 then Result := Trim(FormatDateTime('yyyy.mm.dd', now)); //Æ¯Á¤PC¿¡¼­ .³¯Â¥¸¦ È®ÀåÀÚ·Î ÀÎ½ÄÇÏ¿© ¹®Á¦°¡ ¹ß»ıÇÏ´Â °æ¿ì°¡ ÀÖÀ½.
+  //if nOption = 2 then Result := Trim(FormatDateTime('yyyy.mm.dd', now)); //íŠ¹ì •PCì—ì„œ .ë‚ ì§œë¥¼ í™•ì¥ìë¡œ ì¸ì‹í•˜ì—¬ ë¬¸ì œê°€ ë°œìƒí•˜ëŠ” ê²½ìš°ê°€ ìˆìŒ.
 end;
 
 function g_strNowTime_PC(nOption: integer = 0):string;
@@ -655,7 +655,7 @@ begin
   Result := szTelNum;
   oDDD := TStringList.Create;
 
-  // ±ä¹øÈ£ ¼ø¼­·Î Ãß°¡
+  // ê¸´ë²ˆí˜¸ ìˆœì„œë¡œ ì¶”ê°€
   oDDD.Add('0501');
   oDDD.Add('0502');
   oDDD.Add('0503');
@@ -703,7 +703,7 @@ begin
     szTempStr := StringReplace(szTempStr, ',', '', [rfReplaceAll]);
     //szTempStr := StringReplace(szTempStr, '*', '', [rfReplaceAll]);
 
-    // ¹øÈ£°¡ 9ÀÚ¸® ¹Ì¸¸ÀÌ¸é exit
+    // ë²ˆí˜¸ê°€ 9ìë¦¬ ë¯¸ë§Œì´ë©´ exit
     if Length(szTempStr) < 7 then
       Exit;
 
@@ -712,7 +712,7 @@ begin
     begin
       if Copy(szTempStr, 1, Length(oDDD.strings[idx])) = oDDD[idx] then
       begin
-        n1 := Length(oDDD[idx]); // Áö¿ª¹øÈ£¸ÅÄ¡
+        n1 := Length(oDDD[idx]); // ì§€ì—­ë²ˆí˜¸ë§¤ì¹˜
         break;
       end;
     end;
@@ -730,7 +730,7 @@ begin
       n2 := 4;
       n3 := 4;
     end;
-    // DDD Á¸Àç
+    // DDD ì¡´ì¬
     if (n1 <> 0) and (n2 <> 0) and (n3 <> 0) then
     begin
       Result :=
@@ -738,7 +738,7 @@ begin
         Copy(szTempStr, n1 + 1, n2) + '-' +
         Copy(szTempStr, n1 + n2 + 1, Length(szTempStr));
     end
-    // DDD ºÎÁ¸Àç
+    // DDD ë¶€ì¡´ì¬
     else if (n1 = 0) and (n2 <> 0) and (n3 <> 0) then
     begin
       Result :=
