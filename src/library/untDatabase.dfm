@@ -1,4 +1,4 @@
-object dmMain: TdmMain
+﻿object dmMain: TdmMain
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 366

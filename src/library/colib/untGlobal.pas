@@ -1,11 +1,11 @@
-unit untGlobal;
+ï»¿unit untGlobal;
 
 interface
 
 uses
   Classes, frxClass; //, System.SysUtils, Vcl.Forms;
 
-//ÀÎ¼â ÇÁ¸°ÅÍ Á¤º¸
+//ì¸ì‡„ í”„ë¦°í„° ì •ë³´
 type
   TPrintInfo = packed record
     delivery_code: string;
@@ -21,36 +21,36 @@ type
   //////////////////////////////
   TKorexMaster = packed record
     seq                 : string;     //
-    invoiceno           : string;     // ¼ÛÀå¹øÈ£
+    invoiceno           : string;     // ì†¡ì¥ë²ˆí˜¸
     delivery_code       : string;     //
-    delivery_user_id    : string;     // ½Å¿ëÄÚµå
-    user_id             : string;     // »ç¿ëÀÚ¾ÆÀÌµğ
-    seller_code         : string;     // È­ÁÖ
-    who_code            : string;     // ¹°·ù¼¾ÅÍÄÚµå
-    sendr_nm            : string;     // ¹ß¼ÛÀÎ ÀÌ¸§
-    sendr_mail_no       : string;     // ¹ß¼ÛÀÎ ¿ìÆí¹øÈ£
+    delivery_user_id    : string;     // ì‹ ìš©ì½”ë“œ
+    user_id             : string;     // ì‚¬ìš©ìì•„ì´ë””
+    seller_code         : string;     // í™”ì£¼
+    who_code            : string;     // ë¬¼ë¥˜ì„¼í„°ì½”ë“œ
+    sendr_nm            : string;     // ë°œì†¡ì¸ ì´ë¦„
+    sendr_mail_no       : string;     // ë°œì†¡ì¸ ìš°í¸ë²ˆí˜¸
     sendr_addr          : string;
     sendr_detail_addr   : string;
     sendr_remark        : string;
     sendr_tel_no        : string;
     sendr_cell_no       : string;
-    rcvr_nm             : string;     // ¼öÃëÀÎ ÀÌ¸§
-    rcvr_mail_no        : string;     // ¼öÃëÀÎ ¿ìÆí¹øÈ£
+    rcvr_nm             : string;     // ìˆ˜ì·¨ì¸ ì´ë¦„
+    rcvr_mail_no        : string;     // ìˆ˜ì·¨ì¸ ìš°í¸ë²ˆí˜¸
     rcvr_addr           : string;
     rcvr_detail_addr    : string;
     rcvr_remark         : string;
     rcvr_tel_no         : string;
     rcvr_cell_no        : string;
-    detail_item_count   : Integer;    //»óÇ° ¼ö   (Ãß°¡2024.02.23)
-    detail_item_data    : string;     //»óÇ°µğÅ×ÀÏ(Ãß°¡2024.02.23) ItemList    Invoice_Detail_Item
+    detail_item_count   : Integer;    //ìƒí’ˆ ìˆ˜   (ì¶”ê°€2024.02.23)
+    detail_item_data    : string;     //ìƒí’ˆë””í…Œì¼(ì¶”ê°€2024.02.23) ItemList    Invoice_Detail_Item
     frt_uprice          : string;
-    frt_code            : string; // '0010':'½Å¿ë'  '0020':'ÂøºÒ'
-    frt_name            : string; // GetFareName(KorexMaster.frt_code) Ãß°¡ 2024.04.04
+    frt_code            : string; // '0010':'ì‹ ìš©'  '0020':'ì°©ë¶ˆ'
+    frt_name            : string; // GetFareName(KorexMaster.frt_code) ì¶”ê°€ 2024.04.04
     cust_mgmt_no        : string;
     remark              : string;
     rcpt_code           : string;
     reg_datetime        : string;
-    box_type            : string;     // ¹Ú½ºÅ¸ÀÔ
+    box_type            : string;     // ë°•ìŠ¤íƒ€ì…
     send_tml            : string;
     end_no              : string;
     sub_end_no          : string;
@@ -59,11 +59,11 @@ type
     man_Shot_bran_nm    : string;
     cldv_emp_nm         : string;
     chk_korex_addr      : boolean;
-    Ord_No1             : string;     // ÁÖ¹®¹øÈ£1
-    printCount          : string;     // Ãâ·ÂÈ½¼ö
-    Cos                 : string;     // ½Å±Ô¼ÛÀåÀÇ ÄÚ½ºÁ¤º¸
-    font_size           : Integer;    // ¼ÛÀå¿¡ ÀÎ¼âÇÒ ±Û¾¾ ÆùÆ® Å©±â. Ãß°¡ 2024.04.04
-    pages               : string;     // ½Å±Ô¼ÛÀåÀÇ ÄÚ½ºÁ¤º¸. Ãß°¡ 2024.04.04
+    Ord_No1             : string;     // ì£¼ë¬¸ë²ˆí˜¸1
+    printCount          : string;     // ì¶œë ¥íšŸìˆ˜
+    Cos                 : string;     // ì‹ ê·œì†¡ì¥ì˜ ì½”ìŠ¤ì •ë³´
+    font_size           : Integer;    // ì†¡ì¥ì— ì¸ì‡„í•  ê¸€ì”¨ í°íŠ¸ í¬ê¸°. ì¶”ê°€ 2024.04.04
+    pages               : string;     // ì‹ ê·œì†¡ì¥ì˜ ì½”ìŠ¤ì •ë³´. ì¶”ê°€ 2024.04.04
   end;
 
   TRefineAddr = packed record
@@ -82,10 +82,21 @@ type
 
 
 var
-  gszHomePath : string;
-  szReport: TfrxReport;
+
+  /// <summary>
+  /// ë¡œê·¸ì¸ ìƒíƒœ ì—¬ë¶€--> ë©”ì¸í¼ì´ show/hide ê°€ ë³€ê²½ë˜ë¯€ë¡œ(íŠ¸ë ì´ì•„ì´ì½˜)
+  /// </summary>
   gszLoginYN : string;
-  gszUser_Id : string; //·Î±×ÀÎ ¾ÆÀÌµğ
+
+  {ë¡œê·¸ì¸}
+  gszHomePath : string;
+
+  szReport: TfrxReport;
+
+
+
+
+  gszUser_Id : string; //ë¡œê·¸ì¸ ì•„ì´ë””
   PrintInfo: TPrintInfo;
   inPages, inPage, inPage_suv: Integer;
 
@@ -94,40 +105,41 @@ var
   gszLineCnt  :Integer ;
 
   gszPrintedCount: Integer;
-  Detail_Item_Count: integer; //»óÇ° ¼ö
+  Detail_Item_Count: integer; //ìƒí’ˆ ìˆ˜
 
-  gszDelivery_Sendr_NM          : string; // ÅÃ¹è¹ß¼ÛÀÎ¸í
-  gszDelivery_Sendr_Tel1        : string; // ÅÃ¹è¹ß¼ÛÀÎÀüÈ­1
-  gszDelivery_Sendr_Tel2        : string; // ÅÃ¹è¹ß¼ÛÀÎÀüÈ­2
-  gszDelivery_Sendr_Mail_NO     : string; // ÅÃ¹è¹ß¼ÛÀÎ ¿ìÆí¹øÈ£
-  gszDelivery_Sendr_addr        : string; // ÅÃ¹è¹ß¼ÛÀÎ ÁÖ¼Ò
-  gszDelivery_Sendr_detail_addr : string; // ÅÃ¹è¹ß¼ÛÀÎ »ó¼¼ÁÖ¼Ò
-  gszDelivery_Sendr_Remark      : string; // ¹ß¼ÛÀÎ ¹è¼Û¸Ş½ÃÁö
+  gszDelivery_Sendr_NM          : string; // íƒë°°ë°œì†¡ì¸ëª…
+  gszDelivery_Sendr_Tel1        : string; // íƒë°°ë°œì†¡ì¸ì „í™”1
+  gszDelivery_Sendr_Tel2        : string; // íƒë°°ë°œì†¡ì¸ì „í™”2
+  gszDelivery_Sendr_Mail_NO     : string; // íƒë°°ë°œì†¡ì¸ ìš°í¸ë²ˆí˜¸
+  gszDelivery_Sendr_addr        : string; // íƒë°°ë°œì†¡ì¸ ì£¼ì†Œ
+  gszDelivery_Sendr_detail_addr : string; // íƒë°°ë°œì†¡ì¸ ìƒì„¸ì£¼ì†Œ
+  gszDelivery_Sendr_Remark      : string; // ë°œì†¡ì¸ ë°°ì†¡ë©”ì‹œì§€
 
-  Invoice_Detail_Item: string; //»óÇ°µğÅ×ÀÏ
-  gszSendTML: string; //ÅÍ¹Ì³ÎÄÚµå(´ë¸®Á¡, ÁıÇÏÁ¡) ÀÏºÎÅÃ¹è»çÀÇ °æ¿ì ÇØ´ç°ªÀ» ÀÔ·ÂÇØµÎ¾ú´Ù°¡ Ãâ·ÂÇØ¾ßÇÔ. (¿¹ KGB)
-  //gszAuthLogin_ID : string; //·Î±×ÀÎ ¾ÆÀÌµğ
+  Invoice_Detail_Item: string; //ìƒí’ˆë””í…Œì¼
+  gszSendTML: string; //í„°ë¯¸ë„ì½”ë“œ(ëŒ€ë¦¬ì , ì§‘í•˜ì ) ì¼ë¶€íƒë°°ì‚¬ì˜ ê²½ìš° í•´ë‹¹ê°’ì„ ì…ë ¥í•´ë‘ì—ˆë‹¤ê°€ ì¶œë ¥í•´ì•¼í•¨. (ì˜ˆ KGB)
+  //gszAuthLogin_ID : string; //ë¡œê·¸ì¸ ì•„ì´ë””
 
-  gInvPrinting: Boolean; // »ç¿ëÀÚ ½Ç¼öµîÀ¸·Î Ãâ·Â¹öÆ°ÀÌ ¼ø°£ÀûÀ¸·Î ¿©·¯¹ø ´­¸®´õ¶óµµ ÇÑ¹ø¸¸ Ãâ·ÂÇÏ±âÀ§ÇÑ ÇÃ·¡±×
-  gHttpRecieving: Boolean; // »ç¿ëÀÚ, ½Ã½ºÅÛ ¿À·ùµîÀ¸·Î http req °¡ ¼ø°£ÀûÀ¸·Î ¿©·¯¹ø µé¾î¿À´Â °ÍÀ» ¹æÁö
+  gInvPrinting: Boolean; // ì‚¬ìš©ì ì‹¤ìˆ˜ë“±ìœ¼ë¡œ ì¶œë ¥ë²„íŠ¼ì´ ìˆœê°„ì ìœ¼ë¡œ ì—¬ëŸ¬ë²ˆ ëˆŒë¦¬ë”ë¼ë„ í•œë²ˆë§Œ ì¶œë ¥í•˜ê¸°ìœ„í•œ í”Œë˜ê·¸
+  gHttpRecieving: Boolean; // ì‚¬ìš©ì, ì‹œìŠ¤í…œ ì˜¤ë¥˜ë“±ìœ¼ë¡œ http req ê°€ ìˆœê°„ì ìœ¼ë¡œ ì—¬ëŸ¬ë²ˆ ë“¤ì–´ì˜¤ëŠ” ê²ƒì„ ë°©ì§€
 
 const
   INVOICE_FR3_PATH = 'invoice\';
+  BARCODE_FR3_PATH = 'barcode\';
   PROGRAM_VER = '1.1.1'; // 2024-02-02(1)
   PROGRAM_TITLE = 'PrintMan';
 
-  CODE_FARE_CREDIT    = '0010'; //½Å¿ë
-  CODE_FARE_DEFERRED  = '0020'; //ÂøºÒ
+  CODE_FARE_CREDIT    = '0010'; //ì‹ ìš©
+  CODE_FARE_DEFERRED  = '0020'; //ì°©ë¶ˆ
 
-  NAME_FARE_CREDIT    = '½Å¿ë'; //½Å¿ë
-  NAME_FARE_DEFERRED  = 'ÂøºÒ'; //ÂøºÒ
+  NAME_FARE_CREDIT    = 'ì‹ ìš©'; //ì‹ ìš©
+  NAME_FARE_DEFERRED  = 'ì°©ë¶ˆ'; //ì°©ë¶ˆ
 
 
   CODE_DELIVERY_KOREX = 'D001';
-  NAME_DELIVERY_KOREX = 'CJ´ëÇÑÅë¿î';
+  NAME_DELIVERY_KOREX = 'CJëŒ€í•œí†µìš´';
 
   CODE_DELIVERY_HANJIN = 'D002';
-  NAME_DELIVERY_HANJIN = 'ÇÑÁøÅÃ¹è';
+  NAME_DELIVERY_HANJIN = 'í•œì§„íƒë°°';
 
   EXCUTE_COUNT = 50;
 

@@ -134,6 +134,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uJSON.pas"/>
+        <DCCReference Include="unt_Barcode_Sample.pas">
+            <Form>frm_Barcode_Sample</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

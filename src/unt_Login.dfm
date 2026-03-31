@@ -1,4 +1,4 @@
-object frm_Login: Tfrm_Login
+﻿object frm_Login: Tfrm_Login
   Left = 0
   Top = 0
   BorderStyle = bsNone

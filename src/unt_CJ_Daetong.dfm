@@ -1,4 +1,4 @@
-object frm_CJ_Daetong: Tfrm_CJ_Daetong
+﻿object frm_CJ_Daetong: Tfrm_CJ_Daetong
   Left = 0
   Top = 0
   Caption = 'CJ'#45824#54620#53685#50868' '#49569#51109#52636#47141

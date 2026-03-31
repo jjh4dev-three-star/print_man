@@ -1,4 +1,4 @@
-﻿object frm_Main: Tfrm_Main
+object frm_Main: Tfrm_Main
   Left = 0
   Top = 0
   AlphaBlend = True
@@ -173,8 +173,8 @@
     Top = 24
   end
   object PopupMenu1: TPopupMenu
-    Left = 184
-    Top = 136
+    Left = 376
+    Top = 152
     object N2: TMenuItem
       Caption = #54868#47732#48372#51060#44592
       Visible = False
@@ -198,119 +198,12 @@
       Visible = False
       OnClick = N7Click
     end
-    object N8_BarcodePrint: TMenuItem
-      Caption = #48148#53076#46300' '#53580#49828#53944' '#51064#49604
-      OnClick = N8_BarcodePrintClick
-    end
     object N1: TMenuItem
       Caption = '-'
     end
     object N4: TMenuItem
       Caption = #51333#47308
       OnClick = N4Click
-    end
-  end
-  object frxReport1: TfrxReport
-    Version = '6.2.1'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 44254.500000000000000000
-    ReportOptions.LastChange = 44254.500000000000000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    Left = 184
-    Top = 240
-    Datasets = <>
-    Variables = <>
-    Style = <>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 100.000000000000000000
-      PaperHeight = 150.000000000000000000
-      PaperSize = 256
-      LeftMargin = 5.000000000000000000
-      RightMargin = 5.000000000000000000
-      TopMargin = 5.000000000000000000
-      BottomMargin = 5.000000000000000000
-      Frame.Typ = []
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 226.771800000000000000
-        Top = 18.897650000000000000
-        Width = 340.157700000000000000
-        RowCount = 1
-        object Barcode1: TfrxBarCodeView
-          AllowVectorExport = True
-          ShiftMode = smDontShift
-          Left = 37.795300000000000000
-          Top = 37.795300000000000000
-          Width = 200.000000000000000000
-          Height = 80.000000000000000000
-          AutoSize = False
-          BarType = bcCode128
-          CalcCheckSum = True
-          Frame.Typ = []
-          Rotation = 0
-          TestLine = False
-          Text = '1234567890'
-          WideBarRatio = 2.000000000000000000
-          Zoom = 2.222222222222222000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-        end
-        object Memo1: TfrxMemoView
-          AllowVectorExport = True
-          ShiftMode = smDontShift
-          Left = 37.795300000000000000
-          Top = 132.283500000000000000
-          Width = 200.000000000000000000
-          Height = 18.897650000000000000
-          AllowExpressions = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '1234567890')
-          ParentFont = False
-        end
-        object MemoTitle: TfrxMemoView
-          AllowVectorExport = True
-          ShiftMode = smDontShift
-          Left = 37.795300000000000000
-          Top = 11.338590000000000000
-          Width = 200.000000000000000000
-          Height = 22.677180000000000000
-          AllowExpressions = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Test Barcode Print')
-          ParentFont = False
-        end
-      end
     end
   end
 end

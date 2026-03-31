@@ -1,4 +1,4 @@
-unit unt_Login;
+ï»¿unit unt_Login;
 
 interface
 
@@ -96,7 +96,7 @@ var
   sz_ID, sz_PW: string;
 begin
 
-  // »ç¿ëÀÚ ÀÎÁõ ÀıÂ÷ ¼º°ø½Ã, ´ÙÀ½Ã¢ ¸ğ´Ş·Î(?) ¶ç¿ö + Æ®·¹ÀÌ¾ÆÀÌÄÜ
+  // ì‚¬ìš©ì ì¸ì¦ ì ˆì°¨ ì„±ê³µì‹œ, ë‹¤ìŒì°½ ëª¨ë‹¬ë¡œ(?) ë„ì›Œ + íŠ¸ë ˆì´ì•„ì´ì½˜
   SaveIni;
 
   sz_ID := Trim(edt_ID.Text);
@@ -112,12 +112,12 @@ begin
 //  begin
 //    if dmMain.DBConn_Linkage then
 //    begin
-//      ShowMessage(PChar('Invoice Print DB ¿¬°á ¼º°ø'));
+//      ShowMessage(PChar('Invoice Print DB ì—°ê²° ì„±ê³µ'));
 //
 //    end
 //    else
 //    begin
-//      ShowMessage(PChar('Invoice Print DB ¿¬°á ½ÇÆĞ'));
+//      ShowMessage(PChar('Invoice Print DB ì—°ê²° ì‹¤íŒ¨'));
 //      //Result := False;
 //      Exit;
 //    end;
@@ -126,7 +126,7 @@ begin
 
   if Login(sz_ID, sz_PW) then
   begin
-    ShowMessage(PChar('»ç¿ëÀÚ ÀÎÁõ ¼º°ø'));
+    ShowMessage(PChar('ì‚¬ìš©ì ì¸ì¦ ì„±ê³µ'));
     gszUser_Id := sz_ID;
     szModalResult := True;
     Close;
@@ -134,7 +134,7 @@ begin
   end
   else
   begin
-    ShowMessage(PChar('»ç¿ëÀÚ ÀÎÁõ ½ÇÆĞ'));
+    ShowMessage(PChar('ì‚¬ìš©ì ì¸ì¦ ì‹¤íŒ¨'));
     ngLoginFail := ngLoginFail + 1;
     if ngLoginFail >= 5 then
       Application.Terminate;
@@ -171,8 +171,8 @@ var
 begin
   f_ini := TMemIniFile.Create(gszHomePath + INI_FILE_NAME);
   try
-    edt_ID.Text := f_ini.ReadString(Tfrm_Login.ClassName, 'edt_ID', ''); // ¾Ïº¹È£È­ ¿ä¸Á
-    edt_PW.Text := f_ini.ReadString(Tfrm_Login.ClassName, 'edt_PW', ''); // ¾Ïº¹È£È­ ¿ä¸Á
+    edt_ID.Text := f_ini.ReadString(Tfrm_Login.ClassName, 'edt_ID', ''); // ì•”ë³µí˜¸í™” ìš”ë§
+    edt_PW.Text := f_ini.ReadString(Tfrm_Login.ClassName, 'edt_PW', ''); // ì•”ë³µí˜¸í™” ìš”ë§
   finally
     f_ini.Free;
   end;
@@ -185,8 +185,8 @@ var
 begin
   f_ini := TMemIniFile.Create(gszHomePath + INI_FILE_NAME);
   try
-    f_ini.WriteString(Tfrm_Login.ClassName, 'edt_ID', Trim(edt_ID.Text) ); // ¾Ïº¹È£È­ ¿ä¸Á
-    f_ini.WriteString(Tfrm_Login.ClassName, 'edt_PW', Trim(edt_PW.Text) ); // ¾Ïº¹È£È­ ¿ä¸Á
+    f_ini.WriteString(Tfrm_Login.ClassName, 'edt_ID', Trim(edt_ID.Text) ); // ì•”ë³µí˜¸í™” ìš”ë§
+    f_ini.WriteString(Tfrm_Login.ClassName, 'edt_PW', Trim(edt_PW.Text) ); // ì•”ë³µí˜¸í™” ìš”ë§
     f_ini.UpdateFile;
   finally
     f_ini.Free;

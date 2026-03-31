@@ -1,3 +1,6 @@
+ï»¿
+//ì‚¬ìš©í•˜ì§€ ì•Šê³ ìˆìŒ(2026.03.12)
+
 unit unt_CJ_Daetong;
 
 interface
@@ -331,9 +334,9 @@ type
 
 
     szFontSize: Integer;
-    ValidPrinterList: TStringList; // Ã¼Å©ÇÑ ÇÁ¸°ÅÍ¸®½ºÆ®
-    PrinterIdx: Integer; // ÇÁ¸°ÅÍ ¼ø¼­¸¦ Àü¿ªº¯¼ö·Î ÀúÀå
-    PrinterCount: Integer; // Ã¼Å©ÇÑ ÇÁ¸°ÅÍ ¼ö¸¦ Àü¿ªº¯¼ö·Î ÀúÀå
+    ValidPrinterList: TStringList; // ì²´í¬í•œ í”„ë¦°í„°ë¦¬ìŠ¤íŠ¸
+    PrinterIdx: Integer; // í”„ë¦°í„° ìˆœì„œë¥¼ ì „ì—­ë³€ìˆ˜ë¡œ ì €ì¥
+    PrinterCount: Integer; // ì²´í¬í•œ í”„ë¦°í„° ìˆ˜ë¥¼ ì „ì—­ë³€ìˆ˜ë¡œ ì €ì¥
 
     procedure printCJInvoice();
     function Get_Valid_Printer: string;
@@ -368,7 +371,7 @@ type
       strRemark         : string;
       strSenderMsg      : string);
 
-    function gm_Delivery_Linkage_Insert_Invoice_Header_For_Print( // ¼ÛÀåÃâ·Â µ¥ÀÌÅÍ ¸¶½ºÅÍ µî·Ï ** °øÅëÇÔ¼ö ¾Æ´Ô.
+    function gm_Delivery_Linkage_Insert_Invoice_Header_For_Print( // ì†¡ì¥ì¶œë ¥ ë°ì´í„° ë§ˆìŠ¤í„° ë“±ë¡ ** ê³µí†µí•¨ìˆ˜ ì•„ë‹˜.
       szSeq               : string;
       szinvoiceno         : string;
       szDelivery_Code     : string;
@@ -418,7 +421,7 @@ type
     lszTran_Bookno_date: String;
     lszTran_Bookno_seq: String;
 
-    DividePrintCount: Integer; // ÇÁ¸°ÅÍ¸¶´Ù ÀÎ¼âÇÒ ¼ö·® ÀúÀå
+    DividePrintCount: Integer; // í”„ë¦°í„°ë§ˆë‹¤ ì¸ì‡„í•  ìˆ˜ëŸ‰ ì €ì¥
 
   end;
 
@@ -426,35 +429,35 @@ type
 //////////////////////////////
   TKorexMaster = packed record
     seq                 : string;     //
-    invoiceno           : string;     // ¼ÛÀå¹øÈ£
+    invoiceno           : string;     // ì†¡ì¥ë²ˆí˜¸
     delivery_code       : string;     //
-    delivery_user_id    : string;     // ½Å¿ëÄÚµå
-    user_id             : string;     // »ç¿ëÀÚ¾ÆÀÌµğ
-    seller_code         : string;     // È­ÁÖ
-    who_code            : string;     // ¹°·ù¼¾ÅÍÄÚµå
-    sendr_nm            : string;     // ¹ß¼ÛÀÎ
+    delivery_user_id    : string;     // ì‹ ìš©ì½”ë“œ
+    user_id             : string;     // ì‚¬ìš©ìì•„ì´ë””
+    seller_code         : string;     // í™”ì£¼
+    who_code            : string;     // ë¬¼ë¥˜ì„¼í„°ì½”ë“œ
+    sendr_nm            : string;     // ë°œì†¡ì¸
     sendr_mail_no       : string;
     sendr_addr          : string;
     sendr_detail_addr   : string;
     sendr_remark        : string;
     sendr_tel_no        : string;
     sendr_cell_no       : string;
-    rcvr_nm             : string;     // ¼öÃëÀÎ
+    rcvr_nm             : string;     // ìˆ˜ì·¨ì¸
     rcvr_mail_no        : string;
     rcvr_addr           : string;
     rcvr_detail_addr    : string;
     rcvr_remark         : string;
     rcvr_tel_no         : string;
     rcvr_cell_no        : string;
-    Detail_Item_Count   : Integer;    //»óÇ° ¼ö   (Ãß°¡2024.02.23)
-    Invoice_Detail_Item : string;     //»óÇ°µğÅ×ÀÏ(Ãß°¡2024.02.23)
+    Detail_Item_Count   : Integer;    //ìƒí’ˆ ìˆ˜   (ì¶”ê°€2024.02.23)
+    Invoice_Detail_Item : string;     //ìƒí’ˆë””í…Œì¼(ì¶”ê°€2024.02.23)
     frt_uprice          : string;
     frt_code            : string;
     cust_mgmt_no        : string;
     remark              : string;
     rcpt_code           : string;
     reg_datetime        : TDateTime;
-    box_type            : string;     // ¹Ú½ºÅ¸ÀÔ
+    box_type            : string;     // ë°•ìŠ¤íƒ€ì…
     send_tml            : string;
     end_no              : string;
     sub_end_no          : string;
@@ -463,9 +466,9 @@ type
     man_Shot_bran_nm    : string;
     cldv_emp_nm         : string;
     chk_korex_addr      : boolean;
-    Ord_No1             : string;     // ÁÖ¹®¹øÈ£1
-    printCount          : string;     // Ãâ·ÂÈ½¼ö
-    Cos                 : string;     // ½Å±Ô¼ÛÀåÀÇ ÄÚ½ºÁ¤º¸
+    Ord_No1             : string;     // ì£¼ë¬¸ë²ˆí˜¸1
+    printCount          : string;     // ì¶œë ¥íšŸìˆ˜
+    Cos                 : string;     // ì‹ ê·œì†¡ì¥ì˜ ì½”ìŠ¤ì •ë³´
   end;
 
   TRefineAddr = packed record
@@ -498,7 +501,7 @@ uses
 
 
 
-function Tfrm_CJ_Daetong.gm_Delivery_Linkage_Insert_Invoice_Header_For_Print( // ¼ÛÀåÃâ·Â µ¥ÀÌÅÍ ¸¶½ºÅÍ µî·Ï ** °øÅëÇÔ¼ö ¾Æ´Ô.
+function Tfrm_CJ_Daetong.gm_Delivery_Linkage_Insert_Invoice_Header_For_Print( // ì†¡ì¥ì¶œë ¥ ë°ì´í„° ë§ˆìŠ¤í„° ë“±ë¡ ** ê³µí†µí•¨ìˆ˜ ì•„ë‹˜.
   szSeq               : string;
   szinvoiceno         : string;
   szDelivery_Code     : string;
@@ -662,8 +665,8 @@ var
   TempStr: string;
 begin
 
-  //¼öÁ¤½Ã ÁÖÀÇ
-  //¼ÛÀå Ãâ·Â°ú ¿¢¼¿ÆÄÀÏ »ı¼º½Ã¿¡ ¸ğµÎ ¾²ÀÌ±â¿¡ µÎ°÷ ¸ğµÎ È®ÀÎÈÄ ¼öÁ¤ÀÌ ÇÊ¿ä
+  //ìˆ˜ì •ì‹œ ì£¼ì˜
+  //ì†¡ì¥ ì¶œë ¥ê³¼ ì—‘ì…€íŒŒì¼ ìƒì„±ì‹œì— ëª¨ë‘ ì“°ì´ê¸°ì— ë‘ê³³ ëª¨ë‘ í™•ì¸í›„ ìˆ˜ì •ì´ í•„ìš”
 
   result := '';
   md_invoice_Detail.RecNo := RecordIdx+1;
@@ -673,50 +676,50 @@ begin
   for idx := 0 to CHKLISTBOX.Items.Count - 1 do
   begin
 
-    {2017-05-17 ÃÖº´±¸ ¼öÁ¤
-    ¿¢¼¿ÆÄÀÏ »ı¼º½Ã ·ÎÄĞ¼Ç ¸íÄªÀÌ ´Ş¶ó¼­ Ãâ·ÂÇÒ¼ö ¾ø´ø ¹®Á¦ ¼öÁ¤}
-    {2017-05-29 ÃÖº´±¸ ¼öÁ¤
-    ÇØ´ç ÇÔ¼ö°¡ ¼ÛÀå ¸íÄª Ç¥½Ã±îÁö ¹°·Á ÀÖ¾î ±âÁ¸À¸·Î µ¹¸®¸ç
-    ¼ÛÀå Ãâ·Â ÆÄÀÏ »ı¼º ºÎºĞÀÇ ¸íÄªÀ» º¯°æÇÏ´Â°ÍÀ¸·Î ¼öÁ¤ÇÔ}
-    if (CHKLISTBOX.Items.Items[idx].Text = '·ÎÄÉÀÌ¼Ç') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    {2017-05-17 ìµœë³‘êµ¬ ìˆ˜ì •
+    ì—‘ì…€íŒŒì¼ ìƒì„±ì‹œ ë¡œì¼•ì…˜ ëª…ì¹­ì´ ë‹¬ë¼ì„œ ì¶œë ¥í• ìˆ˜ ì—†ë˜ ë¬¸ì œ ìˆ˜ì •}
+    {2017-05-29 ìµœë³‘êµ¬ ìˆ˜ì •
+    í•´ë‹¹ í•¨ìˆ˜ê°€ ì†¡ì¥ ëª…ì¹­ í‘œì‹œê¹Œì§€ ë¬¼ë ¤ ìˆì–´ ê¸°ì¡´ìœ¼ë¡œ ëŒë¦¬ë©°
+    ì†¡ì¥ ì¶œë ¥ íŒŒì¼ ìƒì„± ë¶€ë¶„ì˜ ëª…ì¹­ì„ ë³€ê²½í•˜ëŠ”ê²ƒìœ¼ë¡œ ìˆ˜ì •í•¨}
+    if (CHKLISTBOX.Items.Items[idx].Text = 'ë¡œì¼€ì´ì…˜') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, '·ÎÄÉÀÌ¼Ç', SetStringStrEnd(md_invoice_DetailRack_Disp.AsString, '[', ']'),
+      TempStr := StringReplace(TempStr, 'ë¡œì¼€ì´ì…˜', SetStringStrEnd(md_invoice_DetailRack_Disp.AsString, '[', ']'),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = '»óÇ°ÄÚµå') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'ìƒí’ˆì½”ë“œ') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, '»óÇ°ÄÚµå', SetStringStrEnd(md_invoice_DetailItem_Code.AsString, '[', ']'),
+      TempStr := StringReplace(TempStr, 'ìƒí’ˆì½”ë“œ', SetStringStrEnd(md_invoice_DetailItem_Code.AsString, '[', ']'),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = 'ÀÚ»çÄÚµå') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'ìì‚¬ì½”ë“œ') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, 'ÀÚ»çÄÚµå', SetStringStrEnd(md_invoice_DetailBacode_Scan.AsString, '[', ']'),
+      TempStr := StringReplace(TempStr, 'ìì‚¬ì½”ë“œ', SetStringStrEnd(md_invoice_DetailBacode_Scan.AsString, '[', ']'),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = '»óÇ°¸í') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'ìƒí’ˆëª…') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, '»óÇ°¸í', SetStringStrEnd(md_invoice_DetailItem_Name.AsString, '', ''),
+      TempStr := StringReplace(TempStr, 'ìƒí’ˆëª…', SetStringStrEnd(md_invoice_DetailItem_Name.AsString, '', ''),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = '¿É¼Ç') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'ì˜µì…˜') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, '¿É¼Ç', SetStringStrEnd(md_invoice_DetailOption_Name.AsString, '[', ']'),
+      TempStr := StringReplace(TempStr, 'ì˜µì…˜', SetStringStrEnd(md_invoice_DetailOption_Name.AsString, '[', ']'),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = 'Å¸ÀÔ') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'íƒ€ì…') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, 'Å¸ÀÔ', SetStringStrEnd(md_invoice_DetailType_Name.AsString, '[', ']'),
+      TempStr := StringReplace(TempStr, 'íƒ€ì…', SetStringStrEnd(md_invoice_DetailType_Name.AsString, '[', ']'),
         [rfReplaceAll]);
     end
 
-    else if (CHKLISTBOX.Items.Items[idx].Text = '¼ö·®') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
+    else if (CHKLISTBOX.Items.Items[idx].Text = 'ìˆ˜ëŸ‰') and (CHKLISTBOX.Items.Items[idx].Checked = true) then
     begin
-      TempStr := StringReplace(TempStr, '¼ö·®', SetStringStrEnd(md_invoice_DetailQty_Out_Fix.AsString, '¡Ü', '°³ '),
+      TempStr := StringReplace(TempStr, 'ìˆ˜ëŸ‰', SetStringStrEnd(md_invoice_DetailQty_Out_Fix.AsString, 'â—', 'ê°œ '),
         [rfReplaceAll]);
     end;
 
@@ -764,10 +767,10 @@ begin
   szReport.Clear;
   szReport.Report.Clear;
 
-  printinfo.print_type_filename := 'CJ´ëÇÑÅë¿î01.fr3';
+  printinfo.print_type_filename := 'CJëŒ€í•œí†µìš´01.fr3';
 
   //szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + printinfo.print_type_filename);
-  szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJ´ëÇÑÅë¿î01.fr3');
+  szReport.LoadFromFile(gszHomePath + INVOICE_FR3_PATH + 'CJëŒ€í•œí†µìš´01.fr3');
   szReport.OnBeforePrint := FR_InvoiceBeforePrint;
 
 
@@ -781,7 +784,7 @@ begin
       ValidPrinterList := TStringList.Create;
       ValidPrinterList.Text := Get_Valid_Printer;
       PrinterIdx := 0;
-      PrinterCount := ValidPrinterList.Count; // ÇÁ¸°ÅÍ °³¼ö¸¦ ÀúÀåÇÑ´Ù.
+      PrinterCount := ValidPrinterList.Count; // í”„ë¦°í„° ê°œìˆ˜ë¥¼ ì €ì¥í•œë‹¤.
       //DividePrintCount := 1; //
 
       szReport.PrintOptions.printer := pchar(ValidPrinterList.Strings[0]);
@@ -891,7 +894,7 @@ begin
         strdlv_emp_nm := KorexMaster.CLDV_EMP_NM;
         strSenderMsg := KorexMaster.rcvr_remark;
 
-        if strFareCode = '0010' then // ½Å¿ëÀÏ °æ¿ì´Â ¹«Á¶°Ç 0À¸·Î ³ªÅ¸³ªµµ·Ï ÇÑ´Ù.
+        if strFareCode = '0010' then // ì‹ ìš©ì¼ ê²½ìš°ëŠ” ë¬´ì¡°ê±´ 0ìœ¼ë¡œ ë‚˜íƒ€ë‚˜ë„ë¡ í•œë‹¤.
           strFarePrice := '0'
         else
           strFarePrice := KorexMaster.FRT_UPRICE;
@@ -913,7 +916,7 @@ begin
           end;
 
           QryDetail.First; }
-        /// ////////////////////////////¶óÀÎ³Ñ±â±â///////////////////////////////
+        /// ////////////////////////////ë¼ì¸ë„˜ê¸°ê¸°///////////////////////////////
         ItemList := TStringList.Create;
         ItemList_sub := TStringList.Create;
         inPage_suv := 0;
@@ -966,7 +969,7 @@ begin
 
               FormatDateTime('YYYY.MM.DD', now),
               GetFareName(strFareCode), // strFareCode   := KorexMaster.frt_code;
-              strFarePrice,     // if strFareCode = '0010' then strFarePrice := '0' else strFarePrice := KorexMaster.FRT_UPRICE; // ½Å¿ëÀÏ °æ¿ì´Â ¹«Á¶°Ç 0À¸·Î ³ªÅ¸³ªµµ·Ï ÇÑ´Ù.
+              strFarePrice,     // if strFareCode = '0010' then strFarePrice := '0' else strFarePrice := KorexMaster.FRT_UPRICE; // ì‹ ìš©ì¼ ê²½ìš°ëŠ” ë¬´ì¡°ê±´ 0ìœ¼ë¡œ ë‚˜íƒ€ë‚˜ë„ë¡ í•œë‹¤.
               strReceiveData1,  // strReceiveData1 := KorexMaster.RCVR_ADDR  + ' ' + KorexMaster.RCVR_DETAIL_ADDR  + #13 + #10 + KorexMaster.RCVR_NM  + ' ' + getSecretTel(gm_getTel(KorexMaster.RCVR_CELL_NO)) + '   ' + getSecretTel(gm_getTel(KorexMaster.RCVR_TEL_NO));
               strSendData1,     // strSendData1    := KorexMaster.SENDR_ADDR + ' ' + KorexMaster.SENDR_DETAIL_ADDR + #13 + #10 + KorexMaster.SENDR_NM + ' ' + gm_getTel(KorexMaster.SENDR_TEL_NO);
 
@@ -1058,7 +1061,7 @@ begin
     TfrxMemoView    (FindObject('mem_zn_dv')).Text                  := '-' + strmem_zn_dv;            // strRecv_zn_dv := KorexMaster.SUB_END_NO;
     TfrxMemoView    (FindObject('mem_end_nm')).Text                 := strmem_end_nm;                 // strend_nm     := KorexMaster.END_NM;
     TfrxMemoView    (FindObject('mem_mang_brn_nm')).Text            := strmem_mang_brn_nm;
-    TfrxMemoView    (FindObject('mem_dlv_emp_nm')).Text             := '¹è´Ş»ç¿ø:' + strmem_dlv_emp_nm;
+    TfrxMemoView    (FindObject('mem_dlv_emp_nm')).Text             := 'ë°°ë‹¬ì‚¬ì›:' + strmem_dlv_emp_nm;
     TfrxBarCodeView (FindObject('BarInvoiceNo1')).Text              := strBarInvoiceNo1;
     TfrxBarCodeView (FindObject('BarInvoiceNo1')).Expression        := strBarInvoiceNo1;
     TfrxMemoView    (FindObject('mem_BarInvoiceNo1_caption')).Text  := GetInvoiceNoCaption(strBarInvoiceNo1);
@@ -1204,12 +1207,12 @@ var
   Search_Type, Search_Type2: string;
 //  Val1, val2: Integer;
 
-  szSender_nm: string; // ¹ß¼ÛÀÎ ¸í
-  szSender_Tel1: string; // ¹ß¼ÛÀÎ ÀüÈ­1
-  szSender_Tel2: string; // ¹ß¼ÛÀÎ ÀüÈ­2
-  szSender_ZipNo: string; // ¹ß¼ÛÀÎ ¿ìÆí¹øÈ£
-  szSender_Addr: string; // ¹ß¼ÛÀÎ ÁÖ¼Ò
-  szSender_Addr_detail: string; // ¹ß¼ÛÀÎ ÁÖ¼Ò
+  szSender_nm: string; // ë°œì†¡ì¸ ëª…
+  szSender_Tel1: string; // ë°œì†¡ì¸ ì „í™”1
+  szSender_Tel2: string; // ë°œì†¡ì¸ ì „í™”2
+  szSender_ZipNo: string; // ë°œì†¡ì¸ ìš°í¸ë²ˆí˜¸
+  szSender_Addr: string; // ë°œì†¡ì¸ ì£¼ì†Œ
+  szSender_Addr_detail: string; // ë°œì†¡ì¸ ì£¼ì†Œ
 //  ServerInvoice: TStringList;
 //  LocalInvoice: TStringList;
   Idx_Val: Integer;
@@ -1219,9 +1222,9 @@ var
   aStatus: cardinal;
   aNrJob: Integer;
   oTMSConn_BySeller: TFDCustomConnection;
-  // Àü¼ÛSEQ¹ß¹ø Ä«¿îÆ® °³¼ö
+  // ì „ì†¡SEQë°œë²ˆ ì¹´ìš´íŠ¸ ê°œìˆ˜
   SeqCount: Integer;
-  // Àü¼ÛSEQ°¡Á®¿Â µ¥ÀÌÅÍ
+  // ì „ì†¡SEQê°€ì ¸ì˜¨ ë°ì´í„°
   Send_SEQ_List: TStringList;
   SeqIndex: Integer;
   szFrtCode: string;
@@ -1232,11 +1235,11 @@ begin
   PrinterCount := 1;
   lszTran_Code := CODE_DELIVERY_KOREX;
 
-  lszSeller_Code := 'C001'; // ÀÓÀÇÀÇ È­ÁÖÄÚµå
-  lszWarehouse_Code := 'W001'; // ÀÓÀÇÀÇ ¹°·ùÃ¢°íÄÚµå
-  printinfo.print_type_filename := 'CJ´ëÇÑÅë¿î01.fr3';
+  lszSeller_Code := 'C001'; // ì„ì˜ì˜ í™”ì£¼ì½”ë“œ
+  lszWarehouse_Code := 'W001'; // ì„ì˜ì˜ ë¬¼ë¥˜ì°½ê³ ì½”ë“œ
+  printinfo.print_type_filename := 'CJëŒ€í•œí†µìš´01.fr3';
 
-  szInvoice_Type := 'K_TYPE_1'; // ´ëÇÑÅë¿î 1¹ø ¾ç½Ä  //cboxInvoiceType.Code;
+  szInvoice_Type := 'K_TYPE_1'; // ëŒ€í•œí†µìš´ 1ë²ˆ ì–‘ì‹  //cboxInvoiceType.Code;
   StrCount := gszChrCnt;
   InvoiceCount := 0;
   SeqCount := 0;
@@ -1244,9 +1247,9 @@ begin
   result := true;
   Multiplex_Invoice := false;
 
-  // ÀÌÀü Ãâ·ÂÇÑ µ¥ÀÌÅÍ°¡ ³²¾ÆÀÖÀ»¼ö ÀÖÀ¸¹Ç·Î »èÁ¦Ã³¸®
+  // ì´ì „ ì¶œë ¥í•œ ë°ì´í„°ê°€ ë‚¨ì•„ìˆì„ìˆ˜ ìˆìœ¼ë¯€ë¡œ ì‚­ì œì²˜ë¦¬
   // gm_Delivery_Linkage_Init_Delivery_Print_Data(lszSeller_Code, lszTran_Code);
-  // print invoice¸¦ »ç¿ëÇÏÁö ¾ÊÀ¸¹Ç·Î »èÁ¦ ºÒÇÊ¿ä  2011-12-01 Á¤Á¤Çå
+  // print invoiceë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ ì‚­ì œ ë¶ˆí•„ìš”  2011-12-01 ì •ì •í—Œ
   IsFail := false;
   oRSMaster := TFDQuery.Create(self);
   oRSDetail := TFDQuery.Create(self);
@@ -1255,10 +1258,10 @@ begin
 
   oRSMaster.Connection := dmMain.dbLinkage;
 
-  // ÇÁ¸°ÅÍÁ¤º¸¸¦ ¿©±â¼­ ·ÎµåÇÏ´Â°É·Î º¯°æ
-  // ¸®Æ÷Æ® °´Ã¼´Â ÇÊ¿äÇÑ °æ¿ì FREE½ÃÅ°±â À§ÇØ ·±Å¸ÀÓ¿¡¼­ »ı¼ºÇÔ
-  // Free ½ÃÅ°´Â ÀÌÀ¯´Â PreparedµÈ ¸®Æ÷Æ®°¡ Clear°¡ ¾ÈµÇ¾î(¿À·ù¹ß»ı) °´Ã¼¸¦ ¾Æ¿¹ Á×ÀÌ°í ´Ù½Ã·ÎµåÇÔ.
-  // ¿ì¼± ÀÏÁ¤ ¼ö·®ÀÌ Ã¤¿öÁö¸é ¸ÕÀú Print ½ÃÅ°±â À§ÇØ º¯°æ
+  // í”„ë¦°í„°ì •ë³´ë¥¼ ì—¬ê¸°ì„œ ë¡œë“œí•˜ëŠ”ê±¸ë¡œ ë³€ê²½
+  // ë¦¬í¬íŠ¸ ê°ì²´ëŠ” í•„ìš”í•œ ê²½ìš° FREEì‹œí‚¤ê¸° ìœ„í•´ ëŸ°íƒ€ì„ì—ì„œ ìƒì„±í•¨
+  // Free ì‹œí‚¤ëŠ” ì´ìœ ëŠ” Preparedëœ ë¦¬í¬íŠ¸ê°€ Clearê°€ ì•ˆë˜ì–´(ì˜¤ë¥˜ë°œìƒ) ê°ì²´ë¥¼ ì•„ì˜ˆ ì£½ì´ê³  ë‹¤ì‹œë¡œë“œí•¨.
+  // ìš°ì„  ì¼ì • ìˆ˜ëŸ‰ì´ ì±„ì›Œì§€ë©´ ë¨¼ì € Print ì‹œí‚¤ê¸° ìœ„í•´ ë³€ê²½
   szReport := TfrxReport.Create(self);
   szReport.Clear;
   szReport.Report.Clear;
@@ -1270,9 +1273,9 @@ begin
 
 
 
-    // Æ®·£Á§¼ÇÀ» °ÉÁö ¾Ê°í, Ãâ·Â¿ë µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-    // Ãâ·Â¿Ï·á ÈÄ Ãâ·ÂÀü  ¸ğµç µ¥ÀÌÅÍ¸¦ Áö¿î´Ù.
-    // ¿¡·¯ ¹ß»ı½Ã µ¥ÀÌÅÍ¸¦ Áö¿î´Ù.
+    // íŠ¸ëœì ì…˜ì„ ê±¸ì§€ ì•Šê³ , ì¶œë ¥ìš© ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+    // ì¶œë ¥ì™„ë£Œ í›„ ì¶œë ¥ì „  ëª¨ë“  ë°ì´í„°ë¥¼ ì§€ìš´ë‹¤.
+    // ì—ëŸ¬ ë°œìƒì‹œ ë°ì´í„°ë¥¼ ì§€ìš´ë‹¤.
     oRS := TFDQuery.Create(nil);
     oRS.Connection := dmMain.dbLinkage;
 
@@ -1285,7 +1288,7 @@ begin
         try
         
 
-          pbPrintDataInput.Properties.Text := '¹ß¹ø¼ÛÀå¹øÈ£ °Ë»çÁß...Àá½Ã¸¸ ±â´Ù¸®¼¼¿ä';
+          pbPrintDataInput.Properties.Text := 'ë°œë²ˆì†¡ì¥ë²ˆí˜¸ ê²€ì‚¬ì¤‘...ì ì‹œë§Œ ê¸°ë‹¤ë¦¬ì„¸ìš”';
           pbPrintDataInput.Update;
           
 
@@ -1304,20 +1307,20 @@ begin
               inc(printed_count);
           end;
 
-          // ¼ÛÀåÁßº¹Ãâ·ÂÀ» ¸·´Â·çÆ¾ Á¦°ÅÇÔ. 2013-08-08. Á¤Á¤Çå.
+          // ì†¡ì¥ì¤‘ë³µì¶œë ¥ì„ ë§‰ëŠ”ë£¨í‹´ ì œê±°í•¨. 2013-08-08. ì •ì •í—Œ.
 
           // if Find_Printed_Invoice(LocalInvoice) = true then
 //          if gszRealIP <> gszCommerceIP then
 //          begin
 //            if printed_count <> 0 then
 //            begin
-//              if Application.MessageBox(PWideChar('ÀÌ¹Ì Ãâ·ÂµÈ ¼ÛÀåÀÌ Æ÷ÇÔµÇ¾î ÀÖ½À´Ï´Ù.' + #13#10 + 'Ãâ·ÂµÈ ¼ÛÀåÀ» ´Ù½Ã Ãâ·ÂÇÏ½Ã°Ú½À´Ï±î?'), '¾Ë¸²', MB_YESNO + MB_ICONQUESTION) = IDYES then
+//              if Application.MessageBox(PWideChar('ì´ë¯¸ ì¶œë ¥ëœ ì†¡ì¥ì´ í¬í•¨ë˜ì–´ ìˆìŠµë‹ˆë‹¤.' + #13#10 + 'ì¶œë ¥ëœ ì†¡ì¥ì„ ë‹¤ì‹œ ì¶œë ¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?'), 'ì•Œë¦¼', MB_YESNO + MB_ICONQUESTION) = IDYES then
 //              begin
 //                if gm_confirm_login = true then
 //                  ApplyPrinted := true
 //                else
 //                begin
-//                  Application.MessageBox(PWideChar('ÀÎÁõ½ÇÆĞÇÏ¿© Ãâ·ÂµÈ ¼ÛÀåÀ» Á¦¿ÜÇÏ°í Ãâ·ÂÇÕ´Ï´Ù.'), '¾Ë¸²', 0);
+//                  Application.MessageBox(PWideChar('ì¸ì¦ì‹¤íŒ¨í•˜ì—¬ ì¶œë ¥ëœ ì†¡ì¥ì„ ì œì™¸í•˜ê³  ì¶œë ¥í•©ë‹ˆë‹¤.'), 'ì•Œë¦¼', 0);
 //                end;
 //              end;
 //            end;
@@ -1329,7 +1332,7 @@ begin
           if ApplyPrinted = false then
             SeqCount := SeqCount - printed_count;
 
-          // seqCount ¿¡´Â Ãâ·ÂÇÒ ¼ÛÀåÀÇ ¼ö·®ÀÌ µé¾î°£´Ù
+          // seqCount ì—ëŠ” ì¶œë ¥í•  ì†¡ì¥ì˜ ìˆ˜ëŸ‰ì´ ë“¤ì–´ê°„ë‹¤
           Send_SEQ_List.Text := gm_Delivery_GetMaxSeq_Send_To_Server_many(seqCount, lszSeller_Code, lszWarehouse_Code);
 
 
@@ -1344,7 +1347,7 @@ begin
           szSQL := szSQL + 'declare @nSeq bigint' + #13 + #10;
           szSQL := szSQL + 'declare @nitem_Seq bigint' + #13 + #10;
           szSQL := szSQL + '' + #13 + #10;
-          szSQL := szSQL + '--  Æ®·£Àè¼Ç ½ÃÀÛ' + #13 + #10;
+          szSQL := szSQL + '--  íŠ¸ëœì­ì…˜ ì‹œì‘' + #13 + #10;
           szSQL := szSQL + 'begin tran' + #13 + #10;
           szSQL := szSQL + 'set @nResultSum = -1 ' + #13 + #10;
           szSQL := szSQL + '' + #13 + #10;
@@ -1354,12 +1357,12 @@ begin
           szSQL2 := szSQL2 + 'declare @nResult int;' + #13 + #10;
           szSQL2 := szSQL2 + 'declare @nResultSum int;' + #13 + #10;
           szSQL2 := szSQL2 + '' + #13 + #10;
-          szSQL2 := szSQL2 + '--  Æ®·£Àè¼Ç ½ÃÀÛ' + #13 + #10;
+          szSQL2 := szSQL2 + '--  íŠ¸ëœì­ì…˜ ì‹œì‘' + #13 + #10;
           szSQL2 := szSQL2 + 'begin tran' + #13 + #10;
           szSQL2 := szSQL2 + 'set @nResultSum = -1 ' + #13 + #10;
           szSQL2 := szSQL2 + '' + #13 + #10;
 
-          inPages := edtPrintTo.Value; // ÀüÃ¼ÆäÀÌÁö ==> 2024.02.26. °ªÀÌ ÇÒ´çµÇÁö ¾Ê´Â´Ù..
+          inPages := edtPrintTo.Value; // ì „ì²´í˜ì´ì§€ ==> 2024.02.26. ê°’ì´ í• ë‹¹ë˜ì§€ ì•ŠëŠ”ë‹¤..
 
 
 
@@ -1368,7 +1371,7 @@ begin
 
 
           // dbtv_M.BeginUpdate();
-          for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ
+          for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„
           begin
             if (edtPrintFrom.Value <= nRowIdx_M + 1) and (edtPrintTo.Value >= nRowIdx_M + 1) then
             begin
@@ -1383,17 +1386,17 @@ begin
             oRowInfo_M := dbtv_M.DataController.GetRowInfo(nRowIdx_M);
             md_invoice_master.RecNo := oRowInfo_M.RecordIndex + 1;
             // ADetail_DataController := dbtv_M.DataController.GetDetailDataController(oRowInfo_M.RecordIndex, 0);
-            // »èÁ¦µÈ °Ç °Ç³Ê¶Ù±â
+            // ì‚­ì œëœ ê±´ ê±´ë„ˆë›°ê¸°
             if dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MDeleteChk.Index] = '2' then
             begin
-              mem_non_print.lines.add('¢º' + inttostr(nRowIdx_M + 1) + '¹ø ¼ÛÀå Àº »èÁ¦µÈ ¼ÛÀåÀÔ´Ï´Ù.');
+              mem_non_print.lines.add('â–¶' + inttostr(nRowIdx_M + 1) + 'ë²ˆ ì†¡ì¥ ì€ ì‚­ì œëœ ì†¡ì¥ì…ë‹ˆë‹¤.');
               continue;
             end;
-            // Ãâ·ÂµÈ ¼ÛÀå °Ç³Ê¶Ù±â
+            // ì¶œë ¥ëœ ì†¡ì¥ ê±´ë„ˆë›°ê¸°
             if (VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index], '') <> '') and (ApplyPrinted = false) then
             begin
-              mem_non_print.lines.add('¢º' + inttostr(nRowIdx_M + 1) + '¹ø ' + dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MInvoiceNo.Index] +
-                ' ¼ÛÀå Àº ÀÌ¹Ì Ãâ·ÂµÈ ¼ÛÀåÀÔ´Ï´Ù.');
+              mem_non_print.lines.add('â–¶' + inttostr(nRowIdx_M + 1) + 'ë²ˆ ' + dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MInvoiceNo.Index] +
+                ' ì†¡ì¥ ì€ ì´ë¯¸ ì¶œë ¥ëœ ì†¡ì¥ì…ë‹ˆë‹¤.');
               continue;
             end;
             if VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index], '') = '' then
@@ -1401,9 +1404,9 @@ begin
               gszPrintedCount := 1;
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index] := '1';
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_reg_userid.Index] := gszAuthLogin_ID;
-              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_reg_datetime.Index] := formatdatetime('yy-mm-dd hh½ÃnnºĞssÃÊ', now);
+              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_reg_datetime.Index] := formatdatetime('yy-mm-dd hhì‹œnnë¶„ssì´ˆ', now);
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_userid.Index] := gszAuthLogin_ID;
-              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_datetime.Index] := formatdatetime('yy-mm-dd hh½ÃnnºĞssÃÊ', now);
+              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_datetime.Index] := formatdatetime('yy-mm-dd hhì‹œnnë¶„ssì´ˆ', now);
             end
             else
             begin
@@ -1411,19 +1414,19 @@ begin
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index] :=
               // inttostr(strtoint(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index]) + 1);
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_userid.Index] := gszAuthLogin_ID;
-              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_datetime.Index] := formatdatetime('yy-mm-dd hh½ÃnnºĞssÃÊ', now);
+              // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrint_edt_datetime.Index] := formatdatetime('yy-mm-dd hhì‹œnnë¶„ssì´ˆ', now);
             end;
 
-            { ¼ÛÀåµ¥ÀÌÅÍ ÀÔ·Â ½ÃÀÛ }
+            { ì†¡ì¥ë°ì´í„° ì…ë ¥ ì‹œì‘ }
             if dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MFix_Fare_Code.Index] = CODE_FARE_DEFERRED then
-            // ÂøºÒÀÏ°æ¿ì¸¸ ±İ¾×À» Ç¥½Ã
+            // ì°©ë¶ˆì¼ê²½ìš°ë§Œ ê¸ˆì•¡ì„ í‘œì‹œ
             begin
               szFarePrice                := inttostr(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MFix_Fare_Price.Index]);
               szFarePrice_Send_To_Server := inttostr(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MFix_Fare_Price.Index]);
             end
             else
             begin
-              // ÀÌÁ¦ ¹è¼Û±İ¾×Àº ½Å¿ëÀÌ´õ¶óµµ µ¥¸ó¿¡ ¿ø·¡ ±İ¾×À» ³Ñ±ä´Ù.  2015-05-15 Á¤Á¤Çå
+              // ì´ì œ ë°°ì†¡ê¸ˆì•¡ì€ ì‹ ìš©ì´ë”ë¼ë„ ë°ëª¬ì— ì›ë˜ ê¸ˆì•¡ì„ ë„˜ê¸´ë‹¤.  2015-05-15 ì •ì •í—Œ
               // if lszTran_Code = CODE_DELIVERY_KGB then
               // begin
               szFarePrice                := inttostr(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MFix_Fare_Price.Index]);
@@ -1450,11 +1453,11 @@ begin
               '-->' +
               md_invoice_detailOrd_Date.AsString;
 
-            // ÀÏÀÚ´Â ¾Æ¹«°Å³ª ÇÏ³ª
+            // ì¼ìëŠ” ì•„ë¬´ê±°ë‚˜ í•˜ë‚˜
 
             nSEQ := '0';
             // gm_Delivery_GetMaxSeq_Print(lszSeller_Code, lszWarehouse_Code);
-            Detail_Item_Count := md_invoice_detail.RecordCount; // Detail »óÇ° ¼ö
+            Detail_Item_Count := md_invoice_detail.RecordCount; // Detail ìƒí’ˆ ìˆ˜
             RefineAddr.rcvrShortAddr := VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MrcvrShortAddr.Index], '');
             RefineAddr.rcvrClsfAddr  := VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MrcvrClsfAddr.Index], '');
             RefineAddr.dlvPreArrEmpNickNm := InputText(VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MdlvPreArrEmpNickNm.Index],
@@ -1469,28 +1472,28 @@ begin
 
 
 
-          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ - µé¿©¾²±âµÈ°Í Ç¥½Ã
+          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ - ë“¤ì—¬ì“°ê¸°ëœê²ƒ í‘œì‹œ
 
 
-            // ¹ß¼ÛÀÎ Á¤º¸ ¼¼ÆÃ
-            // ¹ß¼ÛÀÎ¸í
+            // ë°œì†¡ì¸ ì •ë³´ ì„¸íŒ…
+            // ë°œì†¡ì¸ëª…
             szSender_nm := gszDelivery_Sendr_NM;
 
-            // ¹ß¼ÛÀÎÀüÈ­
+            // ë°œì†¡ì¸ì „í™”
             szSender_Tel1 := gszDelivery_Sendr_Tel1;
             szSender_Tel2 := gszDelivery_Sendr_Tel2;
 
 
-            // ¹ß¼ÛÀÎÁÖ¼Ò
+            // ë°œì†¡ì¸ì£¼ì†Œ
             szSender_ZipNo        := gszDelivery_Sendr_Mail_NO;
             szSender_Addr         := gszDelivery_Sendr_addr;
             szSender_Addr_detail  := gszDelivery_Sendr_detail_addr;
 
 
-          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ - µé¿©¾²±âµÈ°Í Ç¥½Ã
+          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ - ë“¤ì—¬ì“°ê¸°ëœê²ƒ í‘œì‹œ
 
 
-            { ³»Ç° µ¥ÀÌÅÍ(»óÇ°) ÀÔ·Â ½ÃÀÛ }
+            { ë‚´í’ˆ ë°ì´í„°(ìƒí’ˆ) ì…ë ¥ ì‹œì‘ }
             Invoice_Detail_Item := '';
             for nRowIdx_D := 0 to md_invoice_detail.RecordCount - 1 do
             begin
@@ -1498,36 +1501,36 @@ begin
               // oRowInfo_D := ADetail_DataController.GetRowInfo(nRowIdx_D);
               if nRowIdx_D = md_invoice_detail.RecordCount - 1 then
               begin
-                // Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + '¢º ' + ADetail_DataController.Values
+                // Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + 'â–¶ ' + ADetail_DataController.Values
                 // [nRowIdx_D, dbtv_DItem_Disp.Index], 35);
 
                 temp := md_invoice_detailDel_Datetime.AsString;
 
                 if md_invoice_detailDel_Datetime.AsString = '' then
-                // »èÁ¦µÇÁö ¾ÊÀº°Ç¸¸ ³Ñ°ÜÁØ´Ù.
+                // ì‚­ì œë˜ì§€ ì•Šì€ê±´ë§Œ ë„˜ê²¨ì¤€ë‹¤.
                 begin
                   Invoice_Detail_Item := Invoice_Detail_Item +
-                  InsertLineFeed(inttostr(nRowIdx_D + 1) + '¢º' + SetDisplayText(CHKLISTBOX1, LISTBOX1, nRowIdx_D),
+                  InsertLineFeed(inttostr(nRowIdx_D + 1) + 'â–¶' + SetDisplayText(CHKLISTBOX1, LISTBOX1, nRowIdx_D),
                     StrCount);
                 end
                 else
                 begin
-                  mem_non_print.lines.add('¢º' + inttostr(nRowIdx_M + 1) + '¹ø ¼ÛÀå' + inttostr(nRowIdx_D + 1) + '¹øÂ° »óÇ°Àº »èÁ¦µÈ ³»¿ªÀÔ´Ï´Ù.');
+                  mem_non_print.lines.add('â–¶' + inttostr(nRowIdx_M + 1) + 'ë²ˆ ì†¡ì¥' + inttostr(nRowIdx_D + 1) + 'ë²ˆì§¸ ìƒí’ˆì€ ì‚­ì œëœ ë‚´ì—­ì…ë‹ˆë‹¤.');
                 end;
               end
               else
               begin
-                // Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + '¢º ' + ADetail_DataController.Values
+                // Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + 'â–¶ ' + ADetail_DataController.Values
                 // [nRowIdx_D, dbtv_DItem_Disp.Index], 35) + #13#10;
                 if md_invoice_detailDel_Datetime.AsString = '' then
-                // »èÁ¦µÇÁö ¾ÊÀº°Ç¸¸ ³Ñ°ÜÁØ´Ù.
+                // ì‚­ì œë˜ì§€ ì•Šì€ê±´ë§Œ ë„˜ê²¨ì¤€ë‹¤.
                 begin
-                  Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + '¢º' + SetDisplayText(CHKLISTBOX1, LISTBOX1, nRowIdx_D),
+                  Invoice_Detail_Item := Invoice_Detail_Item + InsertLineFeed(inttostr(nRowIdx_D + 1) + 'â–¶' + SetDisplayText(CHKLISTBOX1, LISTBOX1, nRowIdx_D),
                     StrCount) + #13#10;
                 end
                 else
                 begin
-                  mem_non_print.lines.add('¢º' + inttostr(nRowIdx_M + 1) + '¹ø ¼ÛÀå' + inttostr(nRowIdx_D + 1) + '¹øÂ° »óÇ°Àº »èÁ¦µÈ ³»¿ªÀÔ´Ï´Ù.');
+                  mem_non_print.lines.add('â–¶' + inttostr(nRowIdx_M + 1) + 'ë²ˆ ì†¡ì¥' + inttostr(nRowIdx_D + 1) + 'ë²ˆì§¸ ìƒí’ˆì€ ì‚­ì œëœ ë‚´ì—­ì…ë‹ˆë‹¤.');
                 end;
               end;
 
@@ -1538,10 +1541,10 @@ begin
             OldAddr := VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MRcv_Addr.Index], '');
             OldAddr_Dtl := '';
             // end;
-            // ¼ÛÀå Ãâ·Â¿ë ¸¶½ºÅÍ µî·Ï print_invoice
-            // ÀÌÁ¦ ¼ÛÀå Ãâ·Â¿ë ¸¶½ºÅÍ¸¦ ¼­¹ö¿¡ µî·ÏÇÏÁö ¾Ê°í ¹Ù·Î ¸®Æ÷Æ®¿¡ Ãß°¡ÇÑ´Ù.
-            // if chk_sender_info.EditValue = false then //¹ß¼ÛÀÎ Á¤º¸¸¦ ÁÖ¹®ÀÎ Á¤º¸·Î Ç¥½Ã Ã¼Å© FALSE : ÁÖ¹®»ç , true : ÁÖ¹®ÀÎÁ¤º¸ :
-            // GTX ½Å¿ë ÂøºÒ ÄÚµå´Â ´Ù¸£°Ô ÇÑ´Ù
+            // ì†¡ì¥ ì¶œë ¥ìš© ë§ˆìŠ¤í„° ë“±ë¡ print_invoice
+            // ì´ì œ ì†¡ì¥ ì¶œë ¥ìš© ë§ˆìŠ¤í„°ë¥¼ ì„œë²„ì— ë“±ë¡í•˜ì§€ ì•Šê³  ë°”ë¡œ ë¦¬í¬íŠ¸ì— ì¶”ê°€í•œë‹¤.
+            // if chk_sender_info.EditValue = false then //ë°œì†¡ì¸ ì •ë³´ë¥¼ ì£¼ë¬¸ì¸ ì •ë³´ë¡œ í‘œì‹œ ì²´í¬ FALSE : ì£¼ë¬¸ì‚¬ , true : ì£¼ë¬¸ì¸ì •ë³´ :
+            // GTX ì‹ ìš© ì°©ë¶ˆ ì½”ë“œëŠ” ë‹¤ë¥´ê²Œ í•œë‹¤
             //
             szFrtCode := VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MFix_Fare_Code.Index], '');
 
@@ -1552,9 +1555,9 @@ begin
 
 
 
-          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ - µé¿©¾²±âµÈ°Í Ç¥½Ã
+          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ - ë“¤ì—¬ì“°ê¸°ëœê²ƒ í‘œì‹œ
 
-            // ¼ÛÀåÃâ·Â µ¥ÀÌÅÍ¸¦ ¸¶½ºÅÍ ±¸Á¶Ã¼¿¡  µî·Ï ( TKorexMaster = packed record )
+            // ì†¡ì¥ì¶œë ¥ ë°ì´í„°ë¥¼ ë§ˆìŠ¤í„° êµ¬ì¡°ì²´ì—  ë“±ë¡ ( TKorexMaster = packed record )
             gm_Delivery_Linkage_Insert_Invoice_Header_For_Print(
               nSEQ,
               VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MInvoiceNo.Index], ''),
@@ -1580,7 +1583,7 @@ begin
               OldAddr,
               // dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MRcv_Addr1.index] + ' ' + dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MRcv_Addr2.index], //szrcvr_addr: string;
               OldAddr_Dtl, // szrcvr_detail_addr: string;
-              gszDelivery_Sendr_Remark, // szrcvr_remark: string; ¹ß¼ÛÀÎ ¹è¼Û ¸Ş½ÃÁö·Î ¾¸.
+              gszDelivery_Sendr_Remark, // szrcvr_remark: string; ë°œì†¡ì¸ ë°°ì†¡ ë©”ì‹œì§€ë¡œ ì”€.
               VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MRcv_Tel.Index], ''), // szrcvr_tel_no: string;
               VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MRcv_HP.Index], ''), // szrcvr_cell_no: string;
               szFarePrice, // szfrt_uprice: string;
@@ -1601,13 +1604,13 @@ begin
               chk_Korex_Addr.EditValue,
               VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MOrd_No1.Index], ''),
               VarToStrDef(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPrintedCount.Index], '1')
-            ); // szrcpt_code: string //2018-06-27 ÃÖº´±¸±¸ Ãß°¡  Ãâ·ÂÈ½¼ö Ç¥±â
+            ); // szrcpt_code: string //2018-06-27 ìµœë³‘êµ¬êµ¬ ì¶”ê°€  ì¶œë ¥íšŸìˆ˜ í‘œê¸°
 
 
             inc(InvoiceAllCount);
 
-            // ¼­¹ö¿¡ ÀÌ¹Ì ÀÖ´Â °ªÀÎÁö¸¦ Ã¼Å©ÇÔ.
-            // if not gm_Delivery_Linkage_Check_Data_For_SendToServer(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, tv -oÁ¤Á¤ÇåÇå2-cÄõ¸®¹® ÀÏ°ı ÀÛ¾÷ ¼Óµµ°³¼±(ÀÛ¾÷¿Ï·á)zinvoiceno: string;
+            // ì„œë²„ì— ì´ë¯¸ ìˆëŠ” ê°’ì¸ì§€ë¥¼ ì²´í¬í•¨.
+            // if not gm_Delivery_Linkage_Check_Data_For_SendToServer(dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, tv -oì •ì •í—Œí—Œ2-cì¿¼ë¦¬ë¬¸ ì¼ê´„ ì‘ì—… ì†ë„ê°œì„ (ì‘ì—…ì™„ë£Œ)zinvoiceno: string;
             // lszTran_Code, // szdelivery_code: string;
             // lszDelivery_User_ID, // szdelivery_user_id: string;
             // gszAuthLogin_ID, // szuser_id: string;
@@ -1617,15 +1620,15 @@ begin
             // begin
 
 
-          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ - µé¿©¾²±âµÈ°Í Ç¥½Ã
+          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ - ë“¤ì—¬ì“°ê¸°ëœê²ƒ í‘œì‹œ
 
 
             //nSender_SEQ := gm_Delivery_GetMaxSeq_Send_To_Server(lszSeller_Code, lszWarehouse_Code);
             nSender_SEQ := Send_SEQ_List.Strings[SeqIndex];
             inc(SeqIndex);
 
-            // ¼ÛÀå Ãâ·Â Ä«¿îÆ® ¼ö Áõ°¡ ¾÷µ¥ÀÌÆ®
-            // ¼ÛÀå Ãâ·Â Ä«¿îÆ® ¹× ½Ã°£ ¾÷µ¥ÀÌÆ® ==> printed_invoice_list
+            // ì†¡ì¥ ì¶œë ¥ ì¹´ìš´íŠ¸ ìˆ˜ ì¦ê°€ ì—…ë°ì´íŠ¸
+            // ì†¡ì¥ ì¶œë ¥ ì¹´ìš´íŠ¸ ë° ì‹œê°„ ì—…ë°ì´íŠ¸ ==> printed_invoice_list
             szSQL2 := szSQL2 + gm_update_printed_invoice_list(lszSeller_Code, lszWarehouse_Code, dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MTran_Comp.Index],
               dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MInvoiceNo.Index], lszDelivery_User_ID,
               dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MPack_Ord_Inner_seq.Index], dbtv_M.DataController.Values[oRowInfo_M.RecordIndex,
@@ -1637,16 +1640,16 @@ begin
 
               );
 
-            { TODO -oÁ¤Á¤ÇåÇå -cÄõ¸®¹® ÀÏ°ı ÀÛ¾÷ ¼Óµµ°³¼±(ÀÛ¾÷¿Ï·á : ¸¶½ºÅÍ Å×ÀÌºí°ú µğÅ×ÀÏ Å×ÀÌºí ÀÔ·Â Äõ¸®¸¦ ¹­¾î¼­ ÇÑ¹ø¿¡ Ã³¸® }
-            // ÅÃ¹è»ç Àü¼Û¿ë ¸¶½ºÅÍ µî·Ï send_to_server_invoice  ¼Óµµ°³¼±ÆÇ
-            // if chk_sender_info.EditValue = false then //¹ß¼ÛÀÎ Á¤º¸¸¦ ÁÖ¹®ÀÎ Á¤º¸·Î Ç¥½Ã Ã¼Å© FALSE : ÁÖ¹®»ç , true : ÁÖ¹®ÀÎÁ¤º¸ :
+            { TODO -oì •ì •í—Œí—Œ -cì¿¼ë¦¬ë¬¸ ì¼ê´„ ì‘ì—… ì†ë„ê°œì„ (ì‘ì—…ì™„ë£Œ : ë§ˆìŠ¤í„° í…Œì´ë¸”ê³¼ ë””í…Œì¼ í…Œì´ë¸” ì…ë ¥ ì¿¼ë¦¬ë¥¼ ë¬¶ì–´ì„œ í•œë²ˆì— ì²˜ë¦¬ }
+            // íƒë°°ì‚¬ ì „ì†¡ìš© ë§ˆìŠ¤í„° ë“±ë¡ send_to_server_invoice  ì†ë„ê°œì„ íŒ
+            // if chk_sender_info.EditValue = false then //ë°œì†¡ì¸ ì •ë³´ë¥¼ ì£¼ë¬¸ì¸ ì •ë³´ë¡œ í‘œì‹œ ì²´í¬ FALSE : ì£¼ë¬¸ì‚¬ , true : ì£¼ë¬¸ì¸ì •ë³´ :
 
 //            if (dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MAddr_Check.Index] = '0') and
 //              (gszInvalidated_InovicePrint_YN <> 'Y') then
 
 
 
-            // send_to_server_invoice ¿¡ ÀÎ¼­Æ®: ÅÃ¹è»ç¼­¹ö Àü¼Û  µ¥ÀÌÅÍ ¸¶½ºÅÍ µî·Ï
+            // send_to_server_invoice ì— ì¸ì„œíŠ¸: íƒë°°ì‚¬ì„œë²„ ì „ì†¡  ë°ì´í„° ë§ˆìŠ¤í„° ë“±ë¡
             szSQL := szSQL + gm_Delivery_Linkage_Insert_Invoice_Header_For_SendToServer_EX(nSender_SEQ,
               dbtv_M.DataController.Values[oRowInfo_M.RecordIndex, dbtv_MInvoiceNo.Index], // szinvoiceno: string;
               szTranCode, // szdelivery_code: string;
@@ -1691,7 +1694,7 @@ begin
               // oRowInfo_D := ADetail_DataController.GetRowInfo(nRowIdx_D);
               md_invoice_detail.RecNo := nRowIdx_D + 1;
               if md_invoice_detailDel_Datetime.AsString = '' then
-                // »èÁ¦µÇÁö ¾ÊÀº°Ç¸¸ ³Ñ°ÜÁØ´Ù.
+                // ì‚­ì œë˜ì§€ ì•Šì€ê±´ë§Œ ë„˜ê²¨ì¤€ë‹¤.
                 szSQL := szSQL + gm_Delivery_Linkage_Insert_Invoice_Detail_For_SendToServer_Ex(md_invoice_detailOrd_Kind1.AsString,
                   md_invoice_detailItem_Name.AsString, md_invoice_detailQty_Out_Fix.AsString, lszSeller_Code, lszWarehouse_Code);
             end;
@@ -1700,10 +1703,10 @@ begin
 
             // end;
 
-            { ³»Ç° µ¥ÀÌÅÍ(»óÇ°) ÀÔ·Â ³¡ }
+            { ë‚´í’ˆ ë°ì´í„°(ìƒí’ˆ) ì…ë ¥ ë }
 
 
-          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ - µé¿©¾²±âµÈ°Í Ç¥½Ã
+          // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ - ë“¤ì—¬ì“°ê¸°ëœê²ƒ í‘œì‹œ
 
 
             printDb(printinfo.print_type_code);
@@ -1711,39 +1714,39 @@ begin
 
 
 
-            // ÀÏÁ¤¼ö·®ÀÌ µÇ¸é Print½ÃÄÑ¹ö¸²
-            // ¼ö·®ÀÌ Ã¤¿öÁöÁö ¾Ê´õ¶óµµ ¹İº¹¹®ÀÌ ³¡³ª´Â ½ÃÁ¡¿¡¼­ ´Ù½Ã ÇÁ¸°Æ®ÇÔ.
-            // PrepareµÈ ¸®Æ÷Æ®°¡ ¾øÀ¸¸é (= 100Àå»Ì´Âµ¥ 100Àå¾¿ »Ì´Â°É·Î ¼³Á¤µÇ¾î ÀÖ´Ù¸é)
-            // ÀÏ´Ü ÇÁ¸°Æ®ÇÏ°í
-            // PrePareµÈ ¸®Æ÷Æ®°¡ ¾ø±â¶§¹®¿¡ ¹İº¹¹®ÀÌ ³¡³ª´Â ½ÃÁ¡¿¡¼­
-            // ´Ù½Ã ÇÁ¸°Æ® ÇØµµ ¾Æ¹«°Íµµ ÇÁ¸°Æ® ÇÒ °ÍÀÌ ¾ø±â ¶§¹®¿¡ Á¤»óÀûÀ¸·Î ÁøÇàµÊ.
-            // 50ÀåÀÌ Ã¤¿öÁö¸é print
+            // ì¼ì •ìˆ˜ëŸ‰ì´ ë˜ë©´ Printì‹œì¼œë²„ë¦¼
+            // ìˆ˜ëŸ‰ì´ ì±„ì›Œì§€ì§€ ì•Šë”ë¼ë„ ë°˜ë³µë¬¸ì´ ëë‚˜ëŠ” ì‹œì ì—ì„œ ë‹¤ì‹œ í”„ë¦°íŠ¸í•¨.
+            // Prepareëœ ë¦¬í¬íŠ¸ê°€ ì—†ìœ¼ë©´ (= 100ì¥ë½‘ëŠ”ë° 100ì¥ì”© ë½‘ëŠ”ê±¸ë¡œ ì„¤ì •ë˜ì–´ ìˆë‹¤ë©´)
+            // ì¼ë‹¨ í”„ë¦°íŠ¸í•˜ê³ 
+            // PrePareëœ ë¦¬í¬íŠ¸ê°€ ì—†ê¸°ë•Œë¬¸ì— ë°˜ë³µë¬¸ì´ ëë‚˜ëŠ” ì‹œì ì—ì„œ
+            // ë‹¤ì‹œ í”„ë¦°íŠ¸ í•´ë„ ì•„ë¬´ê²ƒë„ í”„ë¦°íŠ¸ í•  ê²ƒì´ ì—†ê¸° ë•Œë¬¸ì— ì •ìƒì ìœ¼ë¡œ ì§„í–‰ë¨.
+            // 50ì¥ì´ ì±„ì›Œì§€ë©´ print
 
-            // InvoiceAllCount ===> ±×¸®µå¿¡¼­ ÇÁ¸°ÅÍ·Î ³Ñ±ä Ãâ·ÂÇÒ ÁÖ¹® Ä«¿îÆ®µÈ°Í( Ãâ·ÂÀÌ ¿¹Á¤µÈ ¼ÛÀå ÃÑ¼ö·®ÀÌ ¾Æ´Ô)
-            //                     DividePrintCount ===> ¼ÛÀå¼ö / ÇÁ¸°ÅÍ¼ö ==> º¹¼öÀÇ ÇÁ¸°ÅÍ±â¸¦ ÀÌ¿ëÇÒ °æ¿ì, ÇÑ´ëÀÇ ÇÁ¸°ÅÍ¿¡¼­ Ãâ·ÂÀÌ ¿¹Á¤µÈ ¼ÛÀå¼ö
-            if InvoiceAllCount mod DividePrintCount = 0 then // Áö±İ±îÁö ÇÁ¸°ÅÍ·Î ³Ñ±ä ¼ö ³ª´©±â ÇÁ¸°ÅÍ´ç Ãâ·ÂÇÒ ¼ö·®ÀÇ ³ª¸ÓÁö
-            begin                                            // ³Ñ±ä°Ô 10Àå, ÇÁ¸°ÅÍ´ç Ãâ·ÂÇÒ ¼ÛÀå¼ö°¡ 30ÀåÀÌ¸é, 30ÀåÀÌ µÇ¾î¾ß ³ª¸ÓÁö°¡ 0ÀÌµÊ.
+            // InvoiceAllCount ===> ê·¸ë¦¬ë“œì—ì„œ í”„ë¦°í„°ë¡œ ë„˜ê¸´ ì¶œë ¥í•  ì£¼ë¬¸ ì¹´ìš´íŠ¸ëœê²ƒ( ì¶œë ¥ì´ ì˜ˆì •ëœ ì†¡ì¥ ì´ìˆ˜ëŸ‰ì´ ì•„ë‹˜)
+            //                     DividePrintCount ===> ì†¡ì¥ìˆ˜ / í”„ë¦°í„°ìˆ˜ ==> ë³µìˆ˜ì˜ í”„ë¦°í„°ê¸°ë¥¼ ì´ìš©í•  ê²½ìš°, í•œëŒ€ì˜ í”„ë¦°í„°ì—ì„œ ì¶œë ¥ì´ ì˜ˆì •ëœ ì†¡ì¥ìˆ˜
+            if InvoiceAllCount mod DividePrintCount = 0 then // ì§€ê¸ˆê¹Œì§€ í”„ë¦°í„°ë¡œ ë„˜ê¸´ ìˆ˜ ë‚˜ëˆ„ê¸° í”„ë¦°í„°ë‹¹ ì¶œë ¥í•  ìˆ˜ëŸ‰ì˜ ë‚˜ë¨¸ì§€
+            begin                                            // ë„˜ê¸´ê²Œ 10ì¥, í”„ë¦°í„°ë‹¹ ì¶œë ¥í•  ì†¡ì¥ìˆ˜ê°€ 30ì¥ì´ë©´, 30ì¥ì´ ë˜ì–´ì•¼ ë‚˜ë¨¸ì§€ê°€ 0ì´ë¨.
                                                              // 10 mod 30 = 10  30 mod 30 = 0
 
 
-              // Á¤È®ÇÏ°Ô ³ª´©¾îÁöÁö ¾ÊÀ¸¹Ç·Î ¸¶Áö¸· ³ª¸ÓÁö ¼ÛÀåÀÌ ÀÖÀ¸¸é
-              // ¸¶Áö¸· ÇÁ¸°ÅÍ¿¡ Ãß°¡ÇÏ¹Ç·Î ÇÁ¸°ÅÍ¸¦ ¹Ù²ãÁÖ´Â ÀÛ¾÷À» ÇÏÁö ¾ÊÀ½.
+              // ì •í™•í•˜ê²Œ ë‚˜ëˆ„ì–´ì§€ì§€ ì•Šìœ¼ë¯€ë¡œ ë§ˆì§€ë§‰ ë‚˜ë¨¸ì§€ ì†¡ì¥ì´ ìˆìœ¼ë©´
+              // ë§ˆì§€ë§‰ í”„ë¦°í„°ì— ì¶”ê°€í•˜ë¯€ë¡œ í”„ë¦°í„°ë¥¼ ë°”ê¿”ì£¼ëŠ” ì‘ì—…ì„ í•˜ì§€ ì•ŠìŒ.
 
 
 
-              // InvoiceAllCount ==> szReport¿Í DB·Î ³Ñ°ÜÁø ¼ÛÀåÁ¤º¸ÀÇ ¼ö(Ãâ·ÂÁ¤º¸°¡ Àü´ŞµÈ ¼ÛÀå¼ö)
+              // InvoiceAllCount ==> szReportì™€ DBë¡œ ë„˜ê²¨ì§„ ì†¡ì¥ì •ë³´ì˜ ìˆ˜(ì¶œë ¥ì •ë³´ê°€ ì „ë‹¬ëœ ì†¡ì¥ìˆ˜)
 
-              // PrinterCount ==> Ã¼Å©ÇÑ ÇÁ¸°ÅÍ ¼ö
-              // PrinterCount := ValidPrinterList.Count; // ÇÁ¸°ÅÍ °³¼ö¸¦ ÀúÀåÇÑ´Ù.
+              // PrinterCount ==> ì²´í¬í•œ í”„ë¦°í„° ìˆ˜
+              // PrinterCount := ValidPrinterList.Count; // í”„ë¦°í„° ê°œìˆ˜ë¥¼ ì €ì¥í•œë‹¤.
 
-              // DividePrintCount ==> ÇÁ¸°ÅÍ¸¶´Ù ÀÎ¼âÇÒ ¼ö·®(ÇÁ¸°ÅÍ°¡ 1´ë¸é ¼ÛÀå¼ö¿Í °°´Ù)
+              // DividePrintCount ==> í”„ë¦°í„°ë§ˆë‹¤ ì¸ì‡„í•  ìˆ˜ëŸ‰(í”„ë¦°í„°ê°€ 1ëŒ€ë©´ ì†¡ì¥ìˆ˜ì™€ ê°™ë‹¤)
               // DividePrintCount := (strtoint(edtPrintTo.Text) - strtoint(edtPrintFrom.Text) + 1) div PrinterCount;
 
-              if DividePrintCount <> InvoiceAllCount div PrinterCount then // ³Ñ±ä¼ÛÀå 10Àå ³ª´©±âÇÁ¸°ÅÍ¼ö(º¸Åë1) ¸ò(º¸Åë10) ÀÌ Ãâ·Â¿¹Á¤µÈ ¼ÛÀå¼ö
+              if DividePrintCount <> InvoiceAllCount div PrinterCount then // ë„˜ê¸´ì†¡ì¥ 10ì¥ ë‚˜ëˆ„ê¸°í”„ë¦°í„°ìˆ˜(ë³´í†µ1) ëª«(ë³´í†µ10) ì´ ì¶œë ¥ì˜ˆì •ëœ ì†¡ì¥ìˆ˜
               begin
                 szReport.PrintOptions.printer := pchar(ValidPrinterList.Strings[PrinterIdx]);
 
-                // index µû¶ó¼­ ÇÁ¸°ÅÍ¸¦ µû¶ó°£´Ù.
+                // index ë”°ë¼ì„œ í”„ë¦°í„°ë¥¼ ë”°ë¼ê°„ë‹¤.
                 szReport.SelectPrinter;
 
                 szReport.Print;
@@ -1751,7 +1754,7 @@ begin
                 PrinterIdx := PrinterIdx + 1;
 
                 /////////////////////////////////////////////////
-                // Ã³À½ ºÎºĞ ¹İº¹ºÎºĞ
+                // ì²˜ìŒ ë¶€ë¶„ ë°˜ë³µë¶€ë¶„
                 szReport := TfrxReport.Create(self);
                 szReport.Clear;
                 szReport.Report.Clear;
@@ -1769,8 +1772,8 @@ begin
                 szReport.SelectPrinter;
               end;
 
-              // ÀÌ¹Ì prepareµÈ ¸®Æ÷Æ®°¡ clear°¡ ¾ÈµÇ±â¶§¹®¿¡ (¹ö±×ÀÎ°ÍÀ¸·Îº¸ÀÓ)
-              // °´Ã¼¸¦ Áö¿ì°í ´Ù½Ã»ı¼º
+              // ì´ë¯¸ prepareëœ ë¦¬í¬íŠ¸ê°€ clearê°€ ì•ˆë˜ê¸°ë•Œë¬¸ì— (ë²„ê·¸ì¸ê²ƒìœ¼ë¡œë³´ì„)
+              // ê°ì²´ë¥¼ ì§€ìš°ê³  ë‹¤ì‹œìƒì„±
             end; // if InvoiceAllCount mod DividePrintCount = 0 then
 
             RefineAddr.rcvrShortAddr := '';
@@ -1787,9 +1790,9 @@ begin
               szSQL := szSQL + 'if @nResultSum > 0 goto ERROR_TRANSACTION ' + #13 + #10;
               szSQL := szSQL + '' + #13 + #10;
               szSQL := szSQL + 'commit tran' + #13 + #10;
-              szSQL := szSQL + '--Æ®·£Àè¼Ç ÀÌÈÄ·Î º¸³»¼­ ·Ñ¹éÀ» Å¸Áö ¾Êµµ·Ï ÇÔ.' + #13 + #10;
+              szSQL := szSQL + '--íŠ¸ëœì­ì…˜ ì´í›„ë¡œ ë³´ë‚´ì„œ ë¡¤ë°±ì„ íƒ€ì§€ ì•Šë„ë¡ í•¨.' + #13 + #10;
               szSQL := szSQL + 'goto END_TRANSACTION' + #13 + #10;
-              szSQL := szSQL + '--¿¡·¯ÀÏ °æ¿ì ·Ñ¹é' + #13 + #10;
+              szSQL := szSQL + '--ì—ëŸ¬ì¼ ê²½ìš° ë¡¤ë°±' + #13 + #10;
               szSQL := szSQL + 'ERROR_TRANSACTION:' + #13 + #10;
               szSQL := szSQL + 'rollback tran' + #13 + #10;
               szSQL := szSQL + 'END_TRANSACTION:' + #13 + #10;
@@ -1804,9 +1807,9 @@ begin
               szSQL2 := szSQL2 + 'if @nResultSum > 0 goto ERROR_TRANSACTION ' + #13 + #10;
               szSQL2 := szSQL2 + '' + #13 + #10;
               szSQL2 := szSQL2 + 'commit tran' + #13 + #10;
-              szSQL2 := szSQL2 + '--Æ®·£Àè¼Ç ÀÌÈÄ·Î º¸³»¼­ ·Ñ¹éÀ» Å¸Áö ¾Êµµ·Ï ÇÔ.' + #13 + #10;
+              szSQL2 := szSQL2 + '--íŠ¸ëœì­ì…˜ ì´í›„ë¡œ ë³´ë‚´ì„œ ë¡¤ë°±ì„ íƒ€ì§€ ì•Šë„ë¡ í•¨.' + #13 + #10;
               szSQL2 := szSQL2 + 'goto END_TRANSACTION' + #13 + #10;
-              szSQL2 := szSQL2 + '--¿¡·¯ÀÏ °æ¿ì ·Ñ¹é' + #13 + #10;
+              szSQL2 := szSQL2 + '--ì—ëŸ¬ì¼ ê²½ìš° ë¡¤ë°±' + #13 + #10;
               szSQL2 := szSQL2 + 'ERROR_TRANSACTION:' + #13 + #10;
               szSQL2 := szSQL2 + 'rollback tran' + #13 + #10;
               szSQL2 := szSQL2 + 'END_TRANSACTION:' + #13 + #10;
@@ -1816,7 +1819,7 @@ begin
               //Get_QueryText(szSQL);
               // Get_QueryText(szSQL2);
 
-              pbPrintDataInput.Properties.Text := pbPrintDataInput.Properties.Text + ' (Áß°£Àü¼ÛÁß)';
+              pbPrintDataInput.Properties.Text := pbPrintDataInput.Properties.Text + ' (ì¤‘ê°„ì „ì†¡ì¤‘)';
               pbPrintDataInput.Update;
 
               oRS.Open;
@@ -1826,13 +1829,13 @@ begin
               end
               else if oRS.Fieldbyname('nResultSum').AsInteger >= 1 then
               begin
-                Application.MessageBox(pchar('¼ÛÀåÃâ·ÂÁß ¿¡·¯. ´Ù½Ã Á¶È¸ÈÄ Ãâ·ÂÇÏ¼¼¿ä.'), '¾Ë¸²', MB_ICONINFORMATION + MB_OK);
+                Application.MessageBox(pchar('ì†¡ì¥ì¶œë ¥ì¤‘ ì—ëŸ¬. ë‹¤ì‹œ ì¡°íšŒí›„ ì¶œë ¥í•˜ì„¸ìš”.'), 'ì•Œë¦¼', MB_ICONINFORMATION + MB_OK);
                 result := false;
                 Close;
               end
               else
               begin
-                Application.MessageBox(pchar('¾Ë¼ö¾ø´Â ¿¡·¯'), '¿¡·¯', MB_ICONERROR + MB_OK);
+                Application.MessageBox(pchar('ì•Œìˆ˜ì—†ëŠ” ì—ëŸ¬'), 'ì—ëŸ¬', MB_ICONERROR + MB_OK);
                 result := false;
                 Close;
               end;
@@ -1848,7 +1851,7 @@ begin
                 szSQL := szSQL + 'declare @nSeq bigint' + #13 + #10;
                 szSQL := szSQL + 'declare @nitem_Seq bigint' + #13 + #10;
                 szSQL := szSQL + '' + #13 + #10;
-                szSQL := szSQL + '--  Æ®·£Àè¼Ç ½ÃÀÛ' + #13 + #10;
+                szSQL := szSQL + '--  íŠ¸ëœì­ì…˜ ì‹œì‘' + #13 + #10;
                 szSQL := szSQL + 'begin tran' + #13 + #10;
                 szSQL := szSQL + 'set @nResultSum = -1 ' + #13 + #10;
                 szSQL := szSQL + '' + #13 + #10;
@@ -1862,13 +1865,13 @@ begin
               end
               else if oRS2.Fieldbyname('nResultSum').AsInteger >= 1 then
               begin
-                Application.MessageBox(pchar('¼ÛÀåÃâ·ÂÁß ¿¡·¯. ´Ù½Ã Á¶È¸ÈÄ Ãâ·ÂÇÏ¼¼¿ä.'), '¾Ë¸²', MB_ICONINFORMATION + MB_OK);
+                Application.MessageBox(pchar('ì†¡ì¥ì¶œë ¥ì¤‘ ì—ëŸ¬. ë‹¤ì‹œ ì¡°íšŒí›„ ì¶œë ¥í•˜ì„¸ìš”.'), 'ì•Œë¦¼', MB_ICONINFORMATION + MB_OK);
                 result := false;
                 Close;
               end
               else
               begin
-                Application.MessageBox(pchar('¾Ë¼ö¾ø´Â ¿¡·¯'), '¿¡·¯', MB_ICONERROR + MB_OK);
+                Application.MessageBox(pchar('ì•Œìˆ˜ì—†ëŠ” ì—ëŸ¬'), 'ì—ëŸ¬', MB_ICONERROR + MB_OK);
                 result := false;
                 Close;
               end;
@@ -1881,7 +1884,7 @@ begin
                 szSQL2 := szSQL2 + 'declare @nResult int;' + #13 + #10;
                 szSQL2 := szSQL2 + 'declare @nResultSum int;' + #13 + #10;
                 szSQL2 := szSQL2 + '' + #13 + #10;
-                szSQL2 := szSQL2 + '--  Æ®·£Àè¼Ç ½ÃÀÛ' + #13 + #10;
+                szSQL2 := szSQL2 + '--  íŠ¸ëœì­ì…˜ ì‹œì‘' + #13 + #10;
                 szSQL2 := szSQL2 + 'begin tran' + #13 + #10;
                 szSQL2 := szSQL2 + 'set @nResultSum = -1 ' + #13 + #10;
                 szSQL2 := szSQL2 + '' + #13 + #10;
@@ -1889,11 +1892,11 @@ begin
             end;  // if (nRowIdx_M mod EXCUTE_COUNT = 0) and (nRowIdx_M <> 0) then
 
 
-          end; // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // ÅÇ°³Ãâ°íÁØºñÈ­¸é ±×¸®µå ·çÇÁ ³¡
+          end; // for nRowIdx_M := 0 to dbtv_M.DataController.GetRowCount - 1 do // íƒ­ê°œì¶œê³ ì¤€ë¹„í™”ë©´ ê·¸ë¦¬ë“œ ë£¨í”„ ë
 
 
           if szSQL <> '' then
-          // 50°ÇÀ¸·Î µü ¶³¾îÁ³À»¶§ ºó Äõ¸®¹®À» ³¯¸®Áö ¾ÊÀ»±î? ¿¡·¯°¡ ³¯ È®À²ÀÌ ³ô¾Æ¼­ ¼öÁ¤ÇÔ
+          // 50ê±´ìœ¼ë¡œ ë”± ë–¨ì–´ì¡Œì„ë•Œ ë¹ˆ ì¿¼ë¦¬ë¬¸ì„ ë‚ ë¦¬ì§€ ì•Šì„ê¹Œ? ì—ëŸ¬ê°€ ë‚  í™•ìœ¨ì´ ë†’ì•„ì„œ ìˆ˜ì •í•¨
           begin
             szSQL := szSQL + '' + #13 + #10;
             szSQL := szSQL + 'select @nResultSum = sum(nResult) from @tmpTableResult' + #13 + #10;
@@ -1901,9 +1904,9 @@ begin
             szSQL := szSQL + 'if @nResultSum > 0 goto ERROR_TRANSACTION ' + #13 + #10;
             szSQL := szSQL + '' + #13 + #10;
             szSQL := szSQL + 'commit tran' + #13 + #10;
-            szSQL := szSQL + '--Æ®·£Àè¼Ç ÀÌÈÄ·Î º¸³»¼­ ·Ñ¹éÀ» Å¸Áö ¾Êµµ·Ï ÇÔ.' + #13 + #10;
+            szSQL := szSQL + '--íŠ¸ëœì­ì…˜ ì´í›„ë¡œ ë³´ë‚´ì„œ ë¡¤ë°±ì„ íƒ€ì§€ ì•Šë„ë¡ í•¨.' + #13 + #10;
             szSQL := szSQL + 'goto END_TRANSACTION' + #13 + #10;
-            szSQL := szSQL + '--¿¡·¯ÀÏ °æ¿ì ·Ñ¹é' + #13 + #10;
+            szSQL := szSQL + '--ì—ëŸ¬ì¼ ê²½ìš° ë¡¤ë°±' + #13 + #10;
             szSQL := szSQL + 'ERROR_TRANSACTION:' + #13 + #10;
             szSQL := szSQL + 'rollback tran' + #13 + #10;
             szSQL := szSQL + 'END_TRANSACTION:' + #13 + #10;
@@ -1916,9 +1919,9 @@ begin
             szSQL2 := szSQL2 + 'if @nResultSum > 0 goto ERROR_TRANSACTION ' + #13 + #10;
             szSQL2 := szSQL2 + '' + #13 + #10;
             szSQL2 := szSQL2 + 'commit tran' + #13 + #10;
-            szSQL2 := szSQL2 + '--Æ®·£Àè¼Ç ÀÌÈÄ·Î º¸³»¼­ ·Ñ¹éÀ» Å¸Áö ¾Êµµ·Ï ÇÔ.' + #13 + #10;
+            szSQL2 := szSQL2 + '--íŠ¸ëœì­ì…˜ ì´í›„ë¡œ ë³´ë‚´ì„œ ë¡¤ë°±ì„ íƒ€ì§€ ì•Šë„ë¡ í•¨.' + #13 + #10;
             szSQL2 := szSQL2 + 'goto END_TRANSACTION' + #13 + #10;
-            szSQL2 := szSQL2 + '--¿¡·¯ÀÏ °æ¿ì ·Ñ¹é' + #13 + #10;
+            szSQL2 := szSQL2 + '--ì—ëŸ¬ì¼ ê²½ìš° ë¡¤ë°±' + #13 + #10;
             szSQL2 := szSQL2 + 'ERROR_TRANSACTION:' + #13 + #10;
             szSQL2 := szSQL2 + 'rollback tran' + #13 + #10;
             szSQL2 := szSQL2 + 'END_TRANSACTION:' + #13 + #10;
@@ -1934,13 +1937,13 @@ begin
             end
             else if oRS.Fieldbyname('nResultSum').AsInteger >= 1 then
             begin
-              Application.MessageBox(pchar('¼ÛÀåÀü¼ÛÁß ¿¡·¯. ´Ù½Ã Á¶È¸ÈÄ Ãâ·ÂÇÏ¼¼¿ä.'), '¾Ë¸²', MB_ICONINFORMATION + MB_OK);
+              Application.MessageBox(pchar('ì†¡ì¥ì „ì†¡ì¤‘ ì—ëŸ¬. ë‹¤ì‹œ ì¡°íšŒí›„ ì¶œë ¥í•˜ì„¸ìš”.'), 'ì•Œë¦¼', MB_ICONINFORMATION + MB_OK);
               result := false;
               Close;
             end
             else
             begin
-              Application.MessageBox(pchar('¾Ë¼ö¾ø´Â ¿¡·¯'), '¿¡·¯', MB_ICONERROR + MB_OK);
+              Application.MessageBox(pchar('ì•Œìˆ˜ì—†ëŠ” ì—ëŸ¬'), 'ì—ëŸ¬', MB_ICONERROR + MB_OK);
               result := false;
               Close;
             end;
@@ -1954,13 +1957,13 @@ begin
             end
             else if oRS2.Fieldbyname('nResultSum').AsInteger >= 1 then
             begin
-              Application.MessageBox(pchar('¼ÛÀåÀü¼ÛÁß ¿¡·¯. ´Ù½Ã Á¶È¸ÈÄ Ãâ·ÂÇÏ¼¼¿ä.'), '¾Ë¸²', MB_ICONINFORMATION + MB_OK);
+              Application.MessageBox(pchar('ì†¡ì¥ì „ì†¡ì¤‘ ì—ëŸ¬. ë‹¤ì‹œ ì¡°íšŒí›„ ì¶œë ¥í•˜ì„¸ìš”.'), 'ì•Œë¦¼', MB_ICONINFORMATION + MB_OK);
               result := false;
               Close;
             end
             else
             begin
-              Application.MessageBox(pchar('¾Ë¼ö¾ø´Â ¿¡·¯'), '¿¡·¯', MB_ICONERROR + MB_OK);
+              Application.MessageBox(pchar('ì•Œìˆ˜ì—†ëŠ” ì—ëŸ¬'), 'ì—ëŸ¬', MB_ICONERROR + MB_OK);
               result := false;
               Close;
             end;
@@ -1970,7 +1973,7 @@ begin
 
 
 
-          pbPrintDataInput.Properties.Text := 'Ãâ·Â¿Ï·á';
+          pbPrintDataInput.Properties.Text := 'ì¶œë ¥ì™„ë£Œ';
           pbPrintDataInput.Update;
           
           szReport.Print;
@@ -1980,10 +1983,10 @@ begin
           begin
             result := false;
 
-            //¿À·ù¸Ş¼¼Áö¿¡¼­µµ ¿¡·¯°¡³ª¼­ ¸Ş¼¼Áö°¡ ¾È³ª¿À´Â °æ¿ì°¡ ÀÖ¾î ¼öÁ¤ÇÔ
+            //ì˜¤ë¥˜ë©”ì„¸ì§€ì—ì„œë„ ì—ëŸ¬ê°€ë‚˜ì„œ ë©”ì„¸ì§€ê°€ ì•ˆë‚˜ì˜¤ëŠ” ê²½ìš°ê°€ ìˆì–´ ìˆ˜ì •í•¨
             szErrFields := '';
             szErrFields := szErrFields + e.Message + #13 + #10;
-            szErrFields := szErrFields + '¿¡·¯Ç×¸ñ' + #13 + #10;
+            szErrFields := szErrFields + 'ì—ëŸ¬í•­ëª©' + #13 + #10;
             szErrFields := szErrFields + lszDelivery_User_ID + #13 + #10;
             szErrFields := szErrFields + gszDelivery_Sendr_NM + #13 + #10;
             szErrFields := szErrFields + gszDelivery_Sendr_Mail_NO + #13 + #10;
@@ -2008,7 +2011,7 @@ begin
             szErrFields := szErrFields + md_invoice_detailQty_Out_Fix.AsString + #13 + #10;
             //szErrFields := szErrFields + inttostr(gnUser_Seq);
 
-            Application.MessageBox(pchar(szErrFields), '¿¡·¯', MB_ICONERROR + MB_OK);
+            Application.MessageBox(pchar(szErrFields), 'ì—ëŸ¬', MB_ICONERROR + MB_OK);
 
           end; // on e: exception do
 
@@ -2030,14 +2033,14 @@ begin
     end; // with   with Tfrm_Order_OutReady_Delivery(owner) do
 
   finally
-    //dmMain.Disconnect_Seller_DB(oTMSConn_BySeller); // ********* ¿äºÎºĞ
+    //dmMain.Disconnect_Seller_DB(oTMSConn_BySeller); // ********* ìš”ë¶€ë¶„
 
-    //2018-11-29 ÃÖº´±¸±¸ Ãß°¡
-    //oTMSConn_BySeller ÇØÁ¦ÇÏÁö ¾Ê¾Æ ¸Ş¸ğ¸®´©¼ö°¡ ¹ß»ı ÇÏ¿© Ãß°¡ÇÔ
-    //oTMSConn_BySeller ÇØÁ¦½Ã nilÀ» ÁÖÁö ¾ÊÀ¸¸é Æ÷ÀÎÅÍ ±¸Á¶»ó ¿¬°áµÈ Ä¿³Ø¼ÇÀ» ÀüºÎ Áö¿ö¹ö·Á ¹®Á¦°¡ ¹ß»ıÇÔ
-    //ÇØÁ¦Àü ¹«Á¶°Ç nilÀ» ÁÖ°í ÇØÁ¦ ÇØ¾ßÇÔ
+    //2018-11-29 ìµœë³‘êµ¬êµ¬ ì¶”ê°€
+    //oTMSConn_BySeller í•´ì œí•˜ì§€ ì•Šì•„ ë©”ëª¨ë¦¬ëˆ„ìˆ˜ê°€ ë°œìƒ í•˜ì—¬ ì¶”ê°€í•¨
+    //oTMSConn_BySeller í•´ì œì‹œ nilì„ ì£¼ì§€ ì•Šìœ¼ë©´ í¬ì¸í„° êµ¬ì¡°ìƒ ì—°ê²°ëœ ì»¤ë„¥ì…˜ì„ ì „ë¶€ ì§€ì›Œë²„ë ¤ ë¬¸ì œê°€ ë°œìƒí•¨
+    //í•´ì œì „ ë¬´ì¡°ê±´ nilì„ ì£¼ê³  í•´ì œ í•´ì•¼í•¨
     //oTMSConn_BySeller := nil;
-    //oTMSConn_BySeller.Free;  // 2020-02-18.Á¤. ÀÌ°É ÇÏ¸é ÄÁ³Ø¼ÇÀÌ ²÷±è, ÁÖ¼®Ã³¸®
+    //oTMSConn_BySeller.Free;  // 2020-02-18.ì •. ì´ê±¸ í•˜ë©´ ì»¨ë„¥ì…˜ì´ ëŠê¹€, ì£¼ì„ì²˜ë¦¬
 
     oRSMaster.Free;
     oRSDetail.Free;
